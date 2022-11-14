@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-warning">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold" href="#">Pirof</a>
+                <a class="navbar-brand fw-bold me-5" href="#">Pirof</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -31,48 +31,65 @@
                         <li class="list-unstyled"><a href="#"></a></li>
                         <li class="nav-item dropdown list-unstyled">
                             <a class="nav-link dropdown mx-5" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Categorie
-                            </a>
+                                aria-expanded="false">Film</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Azione</a></li>
                                 <li><a class="dropdown-item" href="#">Romantico</a></li>
                                 <li><a class="dropdown-item" href="#">Madonna</a></li>
                                 <li><a class="dropdown-item" href="#">Signore</a></li>
+                                <li><a class="dropdown-item" href="#">Dio</a></li>
+                                <li><a class="dropdown-item" href="#">Gesù</a></li>
+                                <li><a class="dropdown-item" href="#">Croce</a></li>
+                                <li><a class="dropdown-item" href="#">Merda</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-5" href="#">qualcosa</a>
+                        <li class="nav-item dropdown list-unstyled">
+                            <a class="nav-link dropdown mx-5" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Fiction</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Azione</a></li>
+                                <li><a class="dropdown-item" href="#">Romantico</a></li>
+                                <li><a class="dropdown-item" href="#">Madonna</a></li>
+                                <li><a class="dropdown-item" href="#">Signore</a></li>
+                                <li><a class="dropdown-item" href="#">Dio</a></li>
+                                <li><a class="dropdown-item" href="#">Gesù</a></li>
+                                <li><a class="dropdown-item" href="#">Croce</a></li>
+                                <li><a class="dropdown-item" href="#">Merda</a></li>
+                            </ul>
                         </li>
                         <form class="container-fluid">
                             <div class="input-group">
-                                <span class="input-group-text bg-white" id="basic-addon1"><i class="fas fa-search bg-white"></i></span>
-                                <input type="text" class="form-control border" placeholder="Cerca..." aria-label="Username"
-                                    aria-describedby="basic-addon1">
+                                <span class="input-group-text bg-white"><i class="fas fa-search bg-white"></i></span>
+                                <input id="search_bar" type="text" class="form-control border" placeholder="Cerca..."
+                                    aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </form>
                     </ul>
                     <li class="list-unstyled"><a href="#"><i class="fas fa-shopping-cart text-black"></i></a></li>
-                        <img src="https://cdn.discordapp.com/attachments/1030428044160143410/1040986159922294814/01.png" width="30px" height="30px" class="rounded-circle ms-5">
-                        <li class="nav-item dropdown list-unstyled">
+                    <img src="https://cdn.discordapp.com/attachments/1030428044160143410/1040986159922294814/01.png"
+                        width="30px" height="30px" class="rounded-circle ms-5">
+                    <li class="nav-item dropdown list-unstyled">
                         <a class="nav-link dropdown me-5 ms-2" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Ciao, User!
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user m-1"></i>Profilo</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-running m-1"></i>Logout</a></li>
+                        <ul class="dropdown-menu" id="userLogin">
+                            <form id="formLogin">
+                                <input class="dropdown-item form-control" id="user" type="text" name="username"
+                                    placeholder="Username">
+                                <input class="dropdown-item form-control" id="password" type="password" name="password"
+                                    placeholder="Password">
+                                <a href="#" class="btn" id="Login">Accedi</a>
                         </ul>
 
                     </li>
-
+                    <a href="#" class="btn">Registrati</a>
                 </div>
             </div>
         </nav>
-        <script src="https://kit.fontawesome.com/0ff7ae3867.js" crossorigin="anonymous"></script>
+
     </header>
+    <script src="https://kit.fontawesome.com/0ff7ae3867.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
