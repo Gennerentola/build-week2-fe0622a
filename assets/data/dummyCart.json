@@ -1,0 +1,14 @@
+{
+    "cart": [
+        {
+            "title": "Black Panther",
+            "poster_path": "https://www.themoviedb.org/t/p/w1280/nq4us1kF7HiOKoqW2f94aAeVuBz.jpg",
+            "price": "9.99"
+        },
+        {
+            "title": "Falling for Christmas",
+            "poster_path": "https://www.themoviedb.org/t/p/w1280/6GkphwL9s6dZb3DoQS9OQ4LcPgY.jpg",
+            "price": "4.99"
+        }
+    ]
+}
