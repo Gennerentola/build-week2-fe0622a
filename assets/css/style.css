@@ -98,16 +98,37 @@
 
 /******************************************************* index.html **************************************************************************/
 
+#formLogged {
+  display: none;
+}
 
+.blue {
+  background-color: #0c41aa;
+}
 
+.yellow {
+  color: #fca72f;
+}
 
+.input-group {
+  border-color: #fca72f;
+}
 
+#saluto:hover, #registrati:hover, #saluto:focus {
+color:#c79650;
+}
 
+.navbar-nav {
+  --bs-nav-link-hover-color: #c79650;
+}
 
+#search_bar::placeholder,input::placeholder {
+  color:#fca72f;
+}
 
-
-
-
+#search_bar, .input-group-text {
+  border:2px solid #fca72f;
+}
 
 
 
