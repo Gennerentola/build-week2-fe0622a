@@ -14,8 +14,9 @@ function getContent() {
 			return response.json();			
 		}).then((data) => {
 			content = data;
-
-
+            document.getElementById("title").innerHTML = ((content.title != null) ? content.title : content.name);
+            document.getElementById("dvd").setAttribute("alt", ((content.title != null) ? content.title : content.name));
+            document.getElementById("dvd").setAttribute("src", catalog + content.poster_path);
             /*
             let divHead = document.createElement("div");
             let divCellSx = document.createElement("div");
@@ -76,5 +77,9 @@ function getContent() {
             */
     });
     
-
 }
+
+$('.rate').on('change mouseover mouseout', () => {
+    const stars = $('.rate:checked~.rate, .rate:hover~.rate').length + ($('.rate:checked').length || $('.rate:hover').length);  
+    $('.score').text(stars ? (stars * .5).toFixed(1) : '未评');
+  })
