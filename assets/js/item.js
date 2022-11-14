@@ -5,6 +5,7 @@ var contentBox = document.getElementById("contentRow");
 const mesi = new Array("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
 const catalog = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
 var content;
+var today = new Date();
 
 window.addEventListener("DOMContentLoaded", getContent);
 
@@ -13,6 +14,9 @@ function getContent() {
 			return response.json();			
 		}).then((data) => {
 			content = data;
+
+
+            /*
             let divHead = document.createElement("div");
             let divCellSx = document.createElement("div");
             let divCellDx = document.createElement("div");
@@ -69,6 +73,7 @@ function getContent() {
             
             divMedia.append(divLeft,divCenter,divRight);
             contentBox.append(divHead,divMedia);
+            */
     });
     
 
