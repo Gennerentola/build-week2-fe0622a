@@ -18,6 +18,7 @@ function sessionStart() {
             for (i = 0; i < login.length; i++) {
                 login[i].style.display = "none";
                 saluto.innerHTML = `Ciao,&nbsp;${user.value}`;
+                saluto.style.marginLeft = "40px"
             }
         } else if (user.value == "" || password.value == ""){
            errore.innerHTML = "Compila tutti i campi";
@@ -45,41 +46,39 @@ function formClear() {
 }
 
 
-var user2 = document.getElementById("userRespo");
-var password2 = document.getElementById("passRespo");
-var addBtn2 = document.getElementById("accediRespo");
-var logged = document.getElementById("formLogged");
-var errore2 = document.getElementById("erroreRespo");
-var saluto2 = document.getElementById("salutoRespo");
-var btnLogout2 = document.getElementById("logoutRespo");
+var userRespo = document.getElementById("userRespo");
+var passwordRespo = document.getElementById("passRespo");
+var addBtnRespo = document.getElementById("accediRespo");
+var erroreRespo = document.getElementById("erroreRespo");
+var salutoRespo = document.getElementById("salutoUtente");
+var btnLogoutRespo = document.getElementById("logoutRespo");
+var loggedRespo = document.getElementById("userMenuRespo");
+var formLogin = document.getElementById("formRespo");
 
-sessionStart2();
-logout3();
-function sessionStart2() {
-    addBtn2.addEventListener('click', function (e) {
+sessionStartRespo();
+logoutRespo();
+function sessionStartRespo() {
+    addBtnRespo.addEventListener('click', function (e) {
         e.preventDefault();
-        if (user2.value == "user" && password2.value == "pass") {
-            logged.style.display = "block";
-            for (i = 0; i < login.length; i++) {
-                login[i].style.display = "none";
-                saluto2.innerHTML = `Ciao,&nbsp;${user2.value} <div id="userMenuRespo"> <a class="nav-link yellow" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a><a class="nav-link yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a><a class="nav-link yellow" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a><button class="nav-link yellow btn" type="button" onClick="logout3" href="#" id="logoutRespo"><i class="fas fa-running m-1"></i>Logout</button></div>`;
-            }
-        } else if (user2.value == "" || password2.value == ""){
-           errore2.innerHTML = "Compila tutti i campi";
+        if (userRespo.value == "user" && passwordRespo.value == "pass") {
+                formLogin.style.display = "none";
+                loggedRespo.style.display = "flex";
+                salutoRespo.innerHTML = `Ciao, ${userRespo.value}`;
+        } else if (userRespo.value == "" || passwordRespo.value == ""){
+           erroreRespo.innerHTML = "Compila tutti i campi";
         } else {
-           errore2.innerHTML = "Accesso negato, user o password sbagliati";
+           erroreRespo.innerHTML = "Accesso negato, user o password sbagliati";
+           
         }
     })
 }
 
-function logout3() {
-    btnLogout2.addEventListener('click', function (e) {
+function logoutRespo() {
+    btnLogoutRespo.addEventListener('click', function (e) {
         e.preventDefault();
-        logged.style.display = "none";
-        for (i = 0; i < login.length; i++) {
-            login[i].style.display = "block";
-            saluto.innerHTML = "Login";
-            formClear();
+        loggedRespo.style.display = "none";
+        formLogin.style.display = "block";
+        salutoRespo.style.display =  "none"
         }
-})
+)
 }
