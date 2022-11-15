@@ -98,7 +98,7 @@
 
 /******************************************************* index.html **************************************************************************/
 
-#formLogged {
+#formLogged, #formLogged2 {
   display: none;
 }
 
@@ -114,7 +114,7 @@
   border-color: #fca72f;
 }
 
-#saluto:hover, #registrati:hover, #saluto:focus {
+#saluto:hover, #registrati:hover, #saluto:focus, #btnLogin:hover, #accediRespo:hover, #registratiRespo:hover {
 color:#c79650;
 }
 
@@ -122,19 +122,116 @@ color:#c79650;
   --bs-nav-link-hover-color: #c79650;
 }
 
-#search_bar::placeholder,input::placeholder {
+input::placeholder {
   color:#fca72f;
 }
 
 #search_bar, .input-group-text {
   border:2px solid #fca72f;
+  color: #0c41aa;
 }
 
+#search_bar {
+  border-left: none;
+}
+
+.input-group-text {
+  border-right: none;
+}
+
+#search_bar::placeholder {
+  color: #0c41aa;
+}
+
+#search_bar:focus{
+  transition: none;
+}
+.input-group-text .fas {
+  color:#0c41aa;;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu:hover .dropdown-item {
+  display: block;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: #fca72f;
+  --bs-dropdown-link-hover-color: #0c41aa;
+}
+
+.navbar {
+  --bs-navbar-toggler-border-color: #ffc107;
+  --bs-navbar-color: #fca72f;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='orange' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+#formRespo {
+  display: none;
+}
+
+.formLogin input:focus {
+  border: none;
+}
+
+/**********************************************************************************************************************************************/
+/*                                             MEDIA QUERY                                      */
+
+@media screen and (max-width:604px) {
+  #loginRespo {
+    margin-top: -15px;
+  }
+  #registratiRespo {
+    margin-top: -20px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width:768px) {
+
+  #avatar, #categorieSerie, #categorieFilm, #registrati, #respo3 {
+    display: none;
+  }
+
+  #respo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
 
+.list-unstyled .fas {
+  display: none;
+}
 
+#saluto {
+  margin-top: 20px;
+}
 
+#formRespo input::placeholder, #formRespo input {
+  color: #0c41aa;
+}
 
+#formRespo input {
+  border: 2px solid #fca72f;
+}
+
+#formRespo {
+  display: block;
+}
+
+#salutoRespo {
+  color:#fca72f;
+}
+
+#userMenuRespo {
+  display: flex;
+  justify-content: space-between;
+}
+}
 
 
 
