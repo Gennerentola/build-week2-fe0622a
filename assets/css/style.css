@@ -237,6 +237,10 @@ input::placeholder {
   border: none;
 }
 
+#userMenuRespo {
+  display: none;
+}
+
 /**********************************************************************************************************************************************/
 /*                                             MEDIA QUERY                                      */
 
@@ -250,9 +254,9 @@ input::placeholder {
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:991px) {
 
-  #avatar, #categorieSerie, #categorieFilm, #registrati, #respo3 {
+  #avatar, #categorieSerie, #categorieFilm, #registrati, #respoSaluto{
     display: none;
   }
 
@@ -288,11 +292,33 @@ input::placeholder {
 }
 
 #userMenuRespo {
-  display: flex;
   justify-content: space-between;
 }
+
 }
 
+@media screen and (min-width: 1199px) {
+   #formRespo {
+    display: none;
+   }
+   #avatar {
+    display: block;
+   }
+   #respoSaluto {
+    display: block;
+   }
+
+   #registrati {
+    display: block;
+   }
+   #paragrafoRespo {
+    display: none;
+   }
+   #respo li a{
+    margin: 0;
+   }
+   
+  }
 
 
 
