@@ -32,8 +32,8 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="respo">
                         <li class="list-unstyled"><a href="#"></a></li>
                         <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown mx-3 yellow" id="film" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Film</a>
+                            <a class="nav-link dropdown yellow" id="film" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Film</a>
                             <ul class="dropdown-menu blue" id="categorieFilm">
                                 <li><a class="dropdown-item yellow" href="#">Azione</a></li>
                                 <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
@@ -46,7 +46,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown mx-3 yellow" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown yellow" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">Serie&#8209;TV</a>
                             <ul class="dropdown-menu blue" id="categorieSerie">
                                 <li><a class="dropdown-item yellow" href="#">Azione</a></li>
@@ -60,10 +60,12 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link  mx-3 yellow" href="#" role="button" aria-expanded="false">Ultimi&nbsp;arrivi</a>
+                            <a class="nav-link yellow" href="#" role="button"
+                                aria-expanded="false">Ultimi&nbsp;arrivi</a>
                         </li>
                         <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link  mx-3 yellow" href="#" role="button" aria-expanded="false">I&nbsp;più&nbsp;popolari</a>
+                            <a class="nav-link yellow" href="#" role="button"
+                                aria-expanded="false">I&nbsp;più&nbsp;popolari</a>
                         </li>
                     </ul>
                     <form class="container-fluid">
@@ -77,12 +79,12 @@
                     <li class="list-unstyled"><a href="#"><i class="fas fa-shopping-cart yellow"></i></a></li>
                     <img src="https://cdn.discordapp.com/attachments/1030428044160143410/1040986159922294814/01.png"
                         width="30px" height="30px" class="rounded-circle ms-5" id="avatar">
-                    <li class="nav-item dropdown list-unstyled"  id="respo3">
-                        <a id="saluto" class="nav-link dropdown me-5 ms-2 yellow" href="#" role="button"
+                    <li class="nav-item dropdown list-unstyled" id="respoSaluto">
+                        <a id="saluto" class="nav-link dropdown me-5 yellow" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                         <ul class="dropdown-menu blue">
                             <form class="formLogin">
-                                <input class="dropdown-item text-warning bg-primary" id="user" type="text"
+                                <input class="dropdown-item text-warning bg-primary " id="user" type="text"
                                     name="username" placeholder="Username" required>
                                 <input class="dropdown-item text-warning bg-primary" id="password" type="password"
                                     name="password" placeholder="Password" required>
@@ -104,20 +106,29 @@
                     <form id="formRespo" class="container-fluid mt-3">
                         <div class="row" id="salutoRespo">
                             <div class="col">
-                          <input type="text" class="form-control" placeholder="Username" id="userRespo">
+                                <input type="text" class="form-control" placeholder="Username" id="userRespo">
+                            </div>
+                            <div class="col">
+                                <input type="password" class="form-control" placeholder="Password" id="passRespo">
+                            </div>
+                            <div class="col" id="loginRespo">
+                                <a href="#" class="btn yellow" id="accediRespo">Accedi</a>
+                                <a href="#" class="btn formLogin yellow" id="registratiRespo">Registrati</a>
+                            </div>
+                            <p class="text-danger" id="erroreRespo"></p>
                         </div>
-                        <div class="col">
-                          <input type="password" class="form-control" placeholder="Password" id="passRespo">
-                          
-                        </div>
-                        <div class="col" id="loginRespo">
-                        <a href="#" class="btn yellow" id="accediRespo" >Accedi</a>
-                        <a href="#" class="btn formLogin yellow" id="registratiRespo">Registrati</a>
-                        </div>
-                        <p class="text-danger" id="erroreRespo"></p>
+                    </form>
+                    <div id="paragrafoRespo">
+                        <p class="yellow m-3"><span id="salutoUtente"></span></p>
                     </div>
-                      </form>
-                    <a href="#" class="btn formLogin yellow" id="registrati">Registrati</a>
+                    <div id="userMenuRespo">
+                        <a class="nav-link yellow ms-2" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a>
+                        <a class="nav-link yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a>
+                        <a class="nav-link yellow" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a>
+                        <a class="nav-link yellow btn" id="logoutRespo"><i class="fas fa-running m-1"></i>Logout</a>
+                    </div>
+                    <a href="#" class="btn formLogin yellow mx-3" id="registrati">Registrati</a>
+
 
                 </div>
             </div>
