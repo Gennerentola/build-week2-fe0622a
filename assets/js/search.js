@@ -76,7 +76,7 @@ function startSearchingMovies(keywords) {
 
 						showcase.append(elementCover, dvdTitle);
 					}					
-				}, (total/1.5)); //// (500 per movies o tv - 1500 per multi)
+				}, (total/1.2)); //// (500 per movies o tv - 1500 per multi)
 			}
 			else {
 				console.log("a");
