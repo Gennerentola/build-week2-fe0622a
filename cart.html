@@ -84,25 +84,29 @@
                     <img width="100%" src="assets/img/emptyCart.png" alt="carrello_vuoto">
                 </div>
 
-                <dl id="cartList" class="list-group">
+                <dl id="cartList" class="list-group pb-5">
                     <!-- Prodotti del carrello-->
                 </dl>
 
             </div>
             <div class="bg-white">
+                <!--Evento carrello vuoto-->
                 <div id="emptyCartBtn" class="container">
                     <button type="button" class="btn btn-warning w-100 my-2">Torna alla home</button>
                 </div>
+                <!--Evento carrello pieno-->
                 <div id="barraPagamento"
-                    class="fixed-bottom d-flex justify-content-between align-items-center py-2 bg-light">
-                    <p class="ms-2">Totale: <span id="costoTotale"></span></p>
+                    class="fixed-bottom d-flex justify-content-between align-items-center py-2 bg-white shadow-lg">
+                    <p class="ms-2 fs-5">Totale: <span id="costoTotale"></span></p>
 
                     <a class="btn btn-warning me-2" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Procedi al pagamento</a>
                 </div>
             </div>
         </div>
+
+        <!--MODALI PER L'ACQUISTO-->
         <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
+            tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -128,7 +132,7 @@
             </div>
         </div>
         <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-            tabindex="-1">
+            tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
