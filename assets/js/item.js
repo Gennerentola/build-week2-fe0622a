@@ -1,11 +1,18 @@
 var address = window.location.href;
-var id = address.slice(address.lastIndexOf("id")+3);
+var id = parseInt(address.slice(address.lastIndexOf("id")+3));
 var type = address.slice(address.lastIndexOf("type")+5, address.lastIndexOf("id")-1);
 var contentBox = document.getElementById("contentRow");
 const mesi = new Array("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
 const catalog = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
 var content;
-var today = new Date();
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+tomorrow.setHours(0, 0, 0, 0);
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
 
 window.addEventListener("DOMContentLoaded", getContent);
 
@@ -14,9 +21,47 @@ function getContent() {
 			return response.json();			
 		}).then((data) => {
 			content = data;
+            let rate = Math.ceil(content.vote_average);
+            switch (rate) {
+                case 10 :
+                    document.querySelectorAll(".rate")[0].checked = true;
+                    break;
+                case 9 :
+                    document.querySelectorAll(".rate")[1].checked = true;
+                    break;
+                case 8 :
+                    document.querySelectorAll(".rate")[2].checked = true;
+                    break;
+                case 7 :
+                    document.querySelectorAll(".rate")[3].checked = true;
+                    break;
+                case 6 :
+                    document.querySelectorAll(".rate")[4].checked = true;
+                    break;
+                case 5 :
+                    document.querySelectorAll(".rate")[5].checked = true;
+                    break;
+                case 4 :
+                    document.querySelectorAll(".rate")[6].checked = true;
+                    break;
+                case 3 :
+                    document.querySelectorAll(".rate")[7].checked = true;
+                    break;
+                case 2 :
+                    document.querySelectorAll(".rate")[8].checked = true;
+                    break;
+                default :
+                    document.querySelectorAll(".rate")[9].checked = true;
+                    break;
+            }
             document.getElementById("title").innerHTML = ((content.title != null) ? content.title : content.name);
             document.getElementById("dvd").setAttribute("alt", ((content.title != null) ? content.title : content.name));
             document.getElementById("dvd").setAttribute("src", catalog + content.poster_path);
+            document.getElementById("tagline").innerText = "« " + content.tagline + " »";
+            document.getElementById("tagline").style.marginTop = "40px";
+            document.getElementById("overview").innerText = content.overview;
+            document.getElementById("tomorrow").innerHTML = `<b>domani, ${tomorrow.getDate()} ${mesi[tomorrow.getMonth()]}</b>.`;
+            document.getElementById("hours").innerHTML = parseInt((((tomorrow - today)/1000)/60)/60) + " min e " + parseInt((((tomorrow - today)/1000)/60)%60) + " min.";
             /*
             let divHead = document.createElement("div");
             let divCellSx = document.createElement("div");
@@ -78,8 +123,3 @@ function getContent() {
     });
     
 }
-
-$('.rate').on('change mouseover mouseout', () => {
-    const stars = $('.rate:checked~.rate, .rate:hover~.rate').length + ($('.rate:checked').length || $('.rate:hover').length);  
-    $('.score').text(stars ? (stars * .5).toFixed(1) : '未评');
-  })
