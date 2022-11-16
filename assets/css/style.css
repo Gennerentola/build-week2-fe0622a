@@ -1,518 +1,517 @@
 .dvdCover-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 600px;
-    margin-top: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+  margin-top: 3em;
+}
+  
+@keyframes turn {
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(-30deg);}
+}
+  
+.dvdCover {
+  width: 134px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(-30deg);
+  transition: 1s ease;
+  animation: turn 1s ease 0s 1 turn;
+}
+  
+.dvdCover:hover {
+  transform: rotateY(0deg);
+}
+  
+@keyframes hide {
+  0% {left: 0;}
+  100% {left: 5px;}
+} 
+  
+.dvdCover > :first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: 134px;
+  height: 200px;
+  transform: translateZ(25px);
+  background-color: #01060f;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 2px 2px 10px #999;
+}
+  
+.dvdCover::before {
+  position: absolute;
+  content: ' ';
+  background-color: blue;
+  left: -60px;
+  top: -2px;
+  width: 19px;
+  height: 204px;
+  transform: translateX(176px) rotateY(90deg);
+  background: linear-gradient(90deg,#000 0%,#080808 5%,#000 10%,#080808 15%,#000 20%,#080808 25%,#000 30%,#080808 35%,#000 40%,#080808 45%,#000 50%,#080808 55%,#000 60%,#080808 65%,#000 70%,#080808 75%,#000 80%,#080808 85%,#000 90%,#080808 95%,#000 100%);
+}
+  
+.dvdCover::after {
+  position: absolute;
+  top: -7px;
+  left: -4px;
+  content: ' ';
+  width: 125px;
+  height: 213px;
+  transform: translateZ(-25px);
+  background-color: #01060f;
+  border-radius: 0 2px 2px 0;
+  box-shadow: -5px 0px 40px 10px #999;
+}
+
+.dvdCover-container-lg {
+  perspective: 1000px;
+  margin-top: 0;
+}
+
+.dvdCover-lg, .dvdCover-lg > :first-child {
+  width: 280px;
+  height: 420px;
+}
+  
+.dvdCover-lg > :first-child {
+  box-shadow: 5px 5px 20px #666;
+}
+  
+.dvdCover-lg::before {
+  left: 72px;
+  top: 0px;
+  width: 44px;
+  height: 421px;
+}
+  
+.dvdCover-lg::after {      
+  top: -2px;
+  left: 72px;
+  width: 200px;
+  height: 425px;
+}
+
+@media screen and (min-width:1200px) {    
+  .dvdCover, .dvdCover > :first-child {
+    width: 200px;
+    height: 300px;
   }
-    
-  @keyframes turn {
-    0% {transform: rotateY(0deg);}
-    100% {transform: rotateY(-30deg);}
-  }
-    
-  .dvdCover {
-    width: 134px;
-    height: 200px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateY(-30deg);
-    transition: 1s ease;
-    animation: turn 1s ease 0s 1 turn;
-  }
-    
-  .dvdCover:hover {
-    transform: rotateY(0deg);
-  }
-    
-  @keyframes hide {
-    0% {left: 0;}
-    100% {left: 5px;}
-  } 
     
   .dvdCover > :first-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: red;
-    width: 134px;
-    height: 200px;
-    transform: translateZ(25px);
-    background-color: #01060f;
-    border-radius: 0 2px 2px 0;
-    box-shadow: 2px 2px 10px #999;
-  }
-    
-  .dvdCover::before {
-    position: absolute;
-    content: ' ';
-    background-color: blue;
-    left: -60px;
-    top: -2px;
-    width: 19px;
-    height: 204px;
-    transform: translateX(176px) rotateY(90deg);
-    background: linear-gradient(90deg,#000 0%,#080808 5%,#000 10%,#080808 15%,#000 20%,#080808 25%,#000 30%,#080808 35%,#000 40%,#080808 45%,#000 50%,#080808 55%,#000 60%,#080808 65%,#000 70%,#080808 75%,#000 80%,#080808 85%,#000 90%,#080808 95%,#000 100%);
-  }
-    
-  .dvdCover::after {
-    position: absolute;
-    top: -7px;
-    left: -4px;
-    content: ' ';
-    width: 125px;
-    height: 213px;
-    transform: translateZ(-25px);
-    background-color: #01060f;
-    border-radius: 0 2px 2px 0;
-    box-shadow: -5px 0px 40px 10px #999;
-  }
-  
-  .dvdCover-container-lg {
-    perspective: 1000px;
-    margin-top: 0;
-  }
-  
-  .dvdCover-lg, .dvdCover-lg > :first-child {
-    width: 280px;
-    height: 420px;
-  }
-    
-  .dvdCover-lg > :first-child {
     box-shadow: 5px 5px 20px #666;
   }
     
-  .dvdCover-lg::before {
-    left: 72px;
+  .dvdCover::before {
+    left: 0px;
     top: 0px;
-    width: 44px;
-    height: 421px;
+    width: 38px;
+    height: 301px;
   }
     
-  .dvdCover-lg::after {      
-    top: -2px;
-    left: 72px;
+  .dvdCover::after {      
+    top: -4px;
+    left: -5px;
     width: 200px;
-    height: 425px;
+    height: 308px;
+    box-shadow: -10px 0 50px 10px #666;
   }
-  
-  @media screen and (min-width:1200px) {    
-    .dvdCover, .dvdCover > :first-child {
-      width: 200px;
-      height: 300px;
-    }
-      
-    .dvdCover > :first-child {
-      box-shadow: 5px 5px 20px #666;
-    }
-      
-    .dvdCover::before {
-      left: 0px;
-      top: 0px;
-      width: 38px;
-      height: 301px;
-    }
-      
-    .dvdCover::after {      
-      top: -4px;
-      left: -5px;
-      width: 200px;
-      height: 308px;
-      box-shadow: -10px 0 50px 10px #666;
-    }
-  }
-  /******************************************************* voti a stelle *********************************************************/
-  .comp-rate {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    position: absolute;
-    color: #bfbfbf;
-  }
-  .rate {
-    border: none;
-    outline: none;
-    margin: 0;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  .rate:nth-of-type(odd)::after {
-    background-position: right top;
-    margin-right: 5px;
-  }
-  /* .rate:hover {
-    transform: scale(1.2);
-  } */
-  .rate:checked::after, .rate:checked~.rate::after, .rate:hover::after, .rate:hover~.rate::after {
-    background-image: url("data:image/svg+xml,%3Csvg t='1567651793068' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1095' width='200' height='200'%3E%3Cpath d='M777.035294 668.611765s18.070588 138.541176 30.117647 240.941176c6.023529 48.188235-30.117647 72.282353-72.282353 54.211765-78.305882-36.141176-192.752941-96.376471-216.847059-108.42353-24.094118 12.047059-144.564706 72.282353-222.870588 108.42353-42.164706 18.070588-78.305882 0-72.282353-54.211765 12.047059-96.376471 30.117647-234.917647 30.117647-234.917647s-114.447059-126.494118-180.705882-204.8c-24.094118-30.117647-6.023529-66.258824 36.141176-78.305882 90.352941-18.070588 234.917647-42.164706 234.917647-42.164706s78.305882-144.564706 126.494118-234.917647c30.117647-54.211765 48.188235-48.188235 48.188235-48.188235 6.023529 0 24.094118 12.047059 36.141177 48.188235 48.188235 90.352941 126.494118 234.917647 126.494118 234.917647s138.541176 30.117647 234.917647 48.188235c42.164706 6.023529 60.235294 48.188235 36.141176 78.305883-60.235294 60.235294-174.682353 192.752941-174.682353 192.752941z' fill='%23facf48' p-id='1096'%3E%3C/path%3E%3C/svg%3E");
-  }
-  .rate::after {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 20px; 
-    transition: all .2s;
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg t='1567649986763' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1101' width='200' height='200'%3E%3Cpath fill='%23bfbfbf' d='M277.8 932c-12.3 0-24.5-3.9-35-11.5-18.5-13.4-27.6-35.8-23.7-58.3l37.1-216.3c1.5-8.4-1.4-17.1-7.5-23L91.5 469.6c-16.4-16-22.2-39.4-15.1-61.1 7.1-21.7 25.5-37.3 48.1-40.6l217.2-31.6c8.5-1.2 15.8-6.6 19.6-14.2l97.1-196.8C468.6 104.7 489.1 92 512 92s43.4 12.7 53.5 33.2L662.6 322c3.8 7.7 11.1 13 19.6 14.2l217.2 31.6c22.6 3.3 41.1 18.8 48.1 40.6 7.1 21.7 1.3 45.2-15.1 61.1L775.3 622.8c-6.1 6-8.9 14.6-7.5 23l7 40.6c1.6 9.1-4.6 17.8-13.7 19.4-9.1 1.6-17.8-4.6-19.4-13.7l-7-40.6c-3.3-19.3 3.1-39.1 17.1-52.8L909 445.5c7.3-7.1 9.7-17 6.6-26.7-3.1-9.6-11-16.3-21-17.7l-217.2-31.6c-19.4-2.8-36.2-15-44.9-32.6l-97.1-196.8c-4.5-9.1-13.2-14.5-23.3-14.5-10.1 0-18.9 5.4-23.3 14.5L391.5 337c-8.7 17.6-25.5 29.8-44.9 32.6l-217.2 31.6c-10 1.5-17.9 8.1-21 17.7-3.1 9.6-0.7 19.6 6.6 26.7l157.2 153.2c14.1 13.7 20.5 33.4 17.1 52.8L252.2 868c-1.7 10 2.2 19.5 10.4 25.5s18.5 6.7 27.4 2l194.3-102.1c17.4-9.1 38.1-9.1 55.5 0L734 895.3c9 4.7 19.2 4 27.4-2s12.1-15.5 10.4-25.5l-6.3-36.5c-1.6-9.1 4.6-17.8 13.7-19.4 9.2-1.6 17.8 4.6 19.4 13.7l6.3 36.5c3.9 22.5-5.2 44.9-23.7 58.3-18.5 13.4-42.6 15.2-62.8 4.5l-194.3-102c-7.6-4-16.6-4-24.2 0L305.6 925.1c-8.8 4.6-18.3 6.9-27.8 6.9z' p-id='1102'%3E%3C/path%3E%3C/svg%3E");
-  }
-  /******************************************************* index.html **************************************************************************/
-  #formLogged, #formLogged2 {
-    display: none;
-  }
-  
-  .blue {
-    background-color: #0c41aa;
-  }
-  
-  .yellow {
-    color: #fca72f;
-  }
-  
-  .input-group {
-    border-color: #fca72f;
-  }
-  
-  #saluto:hover, #registrati:hover, #saluto:focus, #btnLogin:hover, #accediRespo:hover, #registratiRespo:hover {
-  color:#c79650;
-  }
-  
-  .navbar-nav {
-    --bs-nav-link-hover-color: #c79650;
-  }
-  
-  input::placeholder {
-    color:#fca72f;
-  }
-  
-  #search_bar, .input-group-text {
-    border:2px solid #fca72f;
-    color: #0c41aa;
-  }
-  
-  #search_bar {
-    border-left: none;
-  }
-  
-  .input-group-text {
-    border-right: none;
-  }
-  
-  #search_bar::placeholder {
-    color: #0c41aa;
-  }
-  
-  #search_bar:focus{
-    transition: none;
-  }
-  .input-group-text .fas {
-    color:#0c41aa;;
-  }
-  
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-  
-  .dropdown-menu:hover .dropdown-item {
-    display: block;
-  }
-  
-  .dropdown-menu {
-    --bs-dropdown-link-hover-bg: #fca72f;
-    --bs-dropdown-link-hover-color: #0c41aa;
-  }
-  
-  .navbar {
-    --bs-navbar-toggler-border-color: #ffc107;
-    --bs-navbar-color: #fca72f;
-    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='orange' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
-  }
-  
-  #formRespo {
-    display: none;
-  }
-  
-  .formLogin input:focus {
-    border: none;
-  }
-  
-  #userMenuRespo {
-    display: none;
-  }
-  
-  /**********************************************************************************************************************************************/
-  /*                                             MEDIA QUERY                                      */
-  
-  @media screen and (max-width:604px) {
-    #loginRespo {
-      margin-top: -15px;
-    }
-    #registratiRespo {
-      margin-top: -20px;
-      padding-top: 0;
-    }
-  }
-  
-  @media screen and (max-width:991px) {
-  
-    #avatar, #categorieSerie, #categorieFilm, #registrati, #respoSaluto{
-      display: none;
-    }
-  
-    #respo {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-    }
-  
-  
-  .list-unstyled .fas {
-    display: none;
-  }
-  
-  #saluto {
-    margin-top: 20px;
-    margin-left: 20px !important;
-  }
-  
-  #formRespo input::placeholder, #formRespo input {
-    color: #0c41aa;
-  }
-  
-  #formRespo input {
-    border: 2px solid #fca72f;
-  }
-  
-  #formRespo {
-    display: block;
-  }
-  
-  #salutoRespo {
-    color:#fca72f;
-  }
-  
-  #userMenuRespo {
-    justify-content: space-between;
-  }
-  
-  }
-  
-  @media screen and (min-width: 1199px) {
-     #formRespo {
-      display: none;
-     }
-     #avatar {
-      display: block;
-     }
-     #respoSaluto {
-      display: block;
-     }
-  
-     #registrati {
-      display: block;
-     }
-     #paragrafoRespo {
-      display: none;
-     }
-     #respo li a{
-      margin: 0;
-     }
-     
-    }
+}
+/******************************************************* voti a stelle *********************************************************/
+.comp-rate {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  position: absolute;
+  color: #bfbfbf;
+}
+.rate {
+  border: none;
+  outline: none;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.rate:nth-of-type(odd)::after {
+  background-position: right top;
+  margin-right: 5px;
+}
+/* .rate:hover {
+  transform: scale(1.2);
+} */
+.rate:checked::after, .rate:checked~.rate::after, .rate:hover::after, .rate:hover~.rate::after {
+  background-image: url("data:image/svg+xml,%3Csvg t='1567651793068' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1095' width='200' height='200'%3E%3Cpath d='M777.035294 668.611765s18.070588 138.541176 30.117647 240.941176c6.023529 48.188235-30.117647 72.282353-72.282353 54.211765-78.305882-36.141176-192.752941-96.376471-216.847059-108.42353-24.094118 12.047059-144.564706 72.282353-222.870588 108.42353-42.164706 18.070588-78.305882 0-72.282353-54.211765 12.047059-96.376471 30.117647-234.917647 30.117647-234.917647s-114.447059-126.494118-180.705882-204.8c-24.094118-30.117647-6.023529-66.258824 36.141176-78.305882 90.352941-18.070588 234.917647-42.164706 234.917647-42.164706s78.305882-144.564706 126.494118-234.917647c30.117647-54.211765 48.188235-48.188235 48.188235-48.188235 6.023529 0 24.094118 12.047059 36.141177 48.188235 48.188235 90.352941 126.494118 234.917647 126.494118 234.917647s138.541176 30.117647 234.917647 48.188235c42.164706 6.023529 60.235294 48.188235 36.141176 78.305883-60.235294 60.235294-174.682353 192.752941-174.682353 192.752941z' fill='%23facf48' p-id='1096'%3E%3C/path%3E%3C/svg%3E");
+}
+.rate::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 20px; 
+  transition: all .2s;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg t='1567649986763' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1101' width='200' height='200'%3E%3Cpath fill='%23bfbfbf' d='M277.8 932c-12.3 0-24.5-3.9-35-11.5-18.5-13.4-27.6-35.8-23.7-58.3l37.1-216.3c1.5-8.4-1.4-17.1-7.5-23L91.5 469.6c-16.4-16-22.2-39.4-15.1-61.1 7.1-21.7 25.5-37.3 48.1-40.6l217.2-31.6c8.5-1.2 15.8-6.6 19.6-14.2l97.1-196.8C468.6 104.7 489.1 92 512 92s43.4 12.7 53.5 33.2L662.6 322c3.8 7.7 11.1 13 19.6 14.2l217.2 31.6c22.6 3.3 41.1 18.8 48.1 40.6 7.1 21.7 1.3 45.2-15.1 61.1L775.3 622.8c-6.1 6-8.9 14.6-7.5 23l7 40.6c1.6 9.1-4.6 17.8-13.7 19.4-9.1 1.6-17.8-4.6-19.4-13.7l-7-40.6c-3.3-19.3 3.1-39.1 17.1-52.8L909 445.5c7.3-7.1 9.7-17 6.6-26.7-3.1-9.6-11-16.3-21-17.7l-217.2-31.6c-19.4-2.8-36.2-15-44.9-32.6l-97.1-196.8c-4.5-9.1-13.2-14.5-23.3-14.5-10.1 0-18.9 5.4-23.3 14.5L391.5 337c-8.7 17.6-25.5 29.8-44.9 32.6l-217.2 31.6c-10 1.5-17.9 8.1-21 17.7-3.1 9.6-0.7 19.6 6.6 26.7l157.2 153.2c14.1 13.7 20.5 33.4 17.1 52.8L252.2 868c-1.7 10 2.2 19.5 10.4 25.5s18.5 6.7 27.4 2l194.3-102.1c17.4-9.1 38.1-9.1 55.5 0L734 895.3c9 4.7 19.2 4 27.4-2s12.1-15.5 10.4-25.5l-6.3-36.5c-1.6-9.1 4.6-17.8 13.7-19.4 9.2-1.6 17.8 4.6 19.4 13.7l6.3 36.5c3.9 22.5-5.2 44.9-23.7 58.3-18.5 13.4-42.6 15.2-62.8 4.5l-194.3-102c-7.6-4-16.6-4-24.2 0L305.6 925.1c-8.8 4.6-18.3 6.9-27.8 6.9z' p-id='1102'%3E%3C/path%3E%3C/svg%3E");
+}
+/******************************************************* index.html **************************************************************************/
+#formLogged, #formLogged2 {
+  display: none;
+}
 
-  /******************************************************* search.html *************************************************************************/
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /******************************************************** item.html *************************************************************************/
-  
-  .tip {
-    --bs-tooltip-bg: #f4f4f4;
-    --bs-tooltip-color: black;
-    text-shadow: 1px 0px  #333;
-    --bs-tooltip-opacity:1;
+.blue {
+  background-color: #0c41aa;
+}
+
+.yellow {
+  color: #fca72f;
+}
+
+.input-group {
+  border-color: #fca72f;
+}
+
+#saluto:hover, #registrati:hover, #saluto:focus, #btnLogin:hover, #accediRespo:hover, #registratiRespo:hover {
+color:#c79650;
+}
+
+.navbar-nav {
+  --bs-nav-link-hover-color: #c79650;
+}
+
+input::placeholder {
+  color:#fca72f;
+}
+
+#search_bar, .input-group-text {
+  border:2px solid #fca72f;
+  color: #0c41aa;
+}
+
+#search_bar {
+  border-left: none;
+}
+
+.input-group-text {
+  border-right: none;
+}
+
+#search_bar::placeholder {
+  color: #0c41aa;
+}
+
+#search_bar:focus{
+  transition: none;
+}
+.input-group-text .fas {
+  color:#0c41aa;;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu:hover .dropdown-item {
+  display: block;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: #fca72f;
+  --bs-dropdown-link-hover-color: #0c41aa;
+}
+
+.navbar {
+  --bs-navbar-toggler-border-color: #ffc107;
+  --bs-navbar-color: #fca72f;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='orange' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+#formRespo {
+  display: none;
+}
+
+.formLogin input:focus {
+  border: none;
+}
+
+#userMenuRespo {
+  display: none;
+}
+
+/**********************************************************************************************************************************************/
+/*                                             MEDIA QUERY                                      */
+
+@media screen and (max-width:604px) {
+  #loginRespo {
+    margin-top: -15px;
   }
-  
-  .tool {  
-    --bs-btn-font-size: 1rem;
+  #registratiRespo {
+    margin-top: -20px;
+    padding-top: 0;
   }
-  
-  #details {
-    display:inline!important;
-    cursor: pointer;
-  }
-  
-  label.btn-light {
-    width: 80px;
-    --bs-btn-active-bg: #e4e4e4;
-  }
-  
-  label.btn:hover {
-    background-color: white;
-  }
-  
-  #blu-ray:checked ~ #priceBlu-ray {
-    border-color: red!important;
-    --bs-border-width: 2px!important;
-  
-  }
-  
-  #title {
-    font-weight:700;
-  }
-  
-  sup {
-    font-size: 12px;
-    top: -0.8em;
-  }
-  
-  #tagline {
-    color: #333;
-    font-style: italic;
-  }
-  
-  .price {
-    font-size: 28px;
-  }
-  
-  #quantity {
-    width: 60px;
-  
-  }
-  
-  #addToCart, #buyNow {
-    border-radius: 50px;
-  }
-  
-  #buyNow {
-    background-color:darkorange;
-  }
-  
-  
-  
-  
-  @media screen and (min-width:768px) {    
-    div.col-12.col-md-3.order-2 {
-      margin-top: -120px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-  
-    hr.d-none.d-md-block {
-      margin-top: 32px;
-    }
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /******************************************************** register.html *************************************************************************/
-  #registration_body {
-    background-color: #0b41aa;
-  }
-  #form {
-    background-color: #fca72f;
-    box-shadow: 1px 5px 3px blue;
-  }
-  
-  #menu_drop img {
-    width: 30px;
-  }
-  #menu_drop ul {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  #menu_drop li {
-    list-style: none;
-  }
-  .avatar1 {
+}
+
+@media screen and (max-width:991px) {
+
+  #avatar, #categorieSerie, #categorieFilm, #registrati, #respoSaluto{
     display: none;
   }
-  
-  .mostra {
+
+  #respo {
     display: flex;
-    height: 80px;
+    flex-direction: row;
+    justify-content: space-around;
   }
-  
-  .hideTooltip {
-      display: none;
+
+
+.list-unstyled .fas {
+  display: none;
+}
+
+#saluto {
+  margin-top: 20px;
+  margin-left: 20px !important;
+}
+
+#formRespo input::placeholder, #formRespo input {
+  color: #0c41aa;
+}
+
+#formRespo input {
+  border: 2px solid #fca72f;
+}
+
+#formRespo {
+  display: block;
+}
+
+#salutoRespo {
+  color:#fca72f;
+}
+
+#userMenuRespo {
+  justify-content: space-between;
+}
+
+}
+
+@media screen and (min-width: 1199px) {
+   #formRespo {
+    display: none;
+   }
+   #avatar {
+    display: block;
+   }
+   #respoSaluto {
+    display: block;
+   }
+
+   #registrati {
+    display: block;
+   }
+   #paragrafoRespo {
+    display: none;
+   }
+   #respo li a{
+    margin: 0;
+   }
+   
   }
-  .showTooltip {
-  display: initial;
+
+/******************************************************* search.html *************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************** item.html *************************************************************************/
+
+.tip {
+  --bs-tooltip-bg: #f4f4f4;
+  --bs-tooltip-color: black;
+  text-shadow: 1px 0px  #333;
+  --bs-tooltip-opacity:1;
+}
+
+.tool {  
+  --bs-btn-font-size: 1rem;
+}
+
+#details {
+  display:inline!important;
+  cursor: pointer;
+}
+
+label.btn-light {
+  width: 80px;
+  --bs-btn-active-bg: #e4e4e4;
+}
+
+label.btn:hover {
+  background-color: white;
+}
+
+#blu-ray:checked ~ #priceBlu-ray {
+  border-color: red!important;
+  --bs-border-width: 2px!important;
+
+}
+
+#title {
+  font-weight:700;
+}
+
+sup {
+  font-size: 12px;
+  top: -0.8em;
+}
+
+#tagline {
+  color: #333;
+  font-style: italic;
+}
+
+.price {
+  font-size: 28px;
+}
+
+#quantity {
+  width: 60px;
+
+}
+
+#addToCart, #buyNow {
+  border-radius: 50px;
+}
+
+#buyNow {
+  background-color:darkorange;
+}
+
+
+
+
+@media screen and (min-width:768px) {    
+  div.col-12.col-md-3.order-2 {
+    margin-top: -120px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
   }
-  
-  /* animazione avatar e rimozione radio button */
-  
-  .avatar {
-    cursor: pointer;
+
+  hr.d-none.d-md-block {
+    margin-top: 32px;
   }
-  
-  .avatar:active {
-      transform: translateY(4px);
-  }
-  
-  input[type="radio"]{
-      visibility:hidden;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-          
-  
-  
-  
-  
-  /******************************************************** cart.html *************************************************************************/
-  
-  
-  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************** register.html *************************************************************************/
+#registration_body {
+  background-color: #0b41aa;
+}
+#form {
+  background-color: #fca72f;
+  box-shadow: 1px 5px 3px blue;
+}
+
+#menu_drop img {
+  width: 30px;
+}
+#menu_drop ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#menu_drop li {
+  list-style: none;
+}
+.avatar1 {
+  display: none;
+}
+
+.mostra {
+  display: flex;
+  height: 80px;
+}
+
+.hideTooltip {
+    display: none;
+}
+.showTooltip {
+display: initial;
+}
+
+/* animazione avatar e rimozione radio button */
+
+.avatar {
+  cursor: pointer;
+}
+
+.avatar:active {
+    transform: translateY(4px);
+}
+
+input[type="radio"]{
+    visibility:hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+/******************************************************** cart.html *************************************************************************/
+
+
