@@ -75,7 +75,8 @@ function visualizzaCarrello() {
                 numArticoli.innerHTML += `<i class="fas fa-boxes"></i> Articoli nel carrello: ${arrayCart.length}`;
                 sommaPrezzi();
             } else {
-                barraPagamento.classList.remove("d-lg-block")
+                barraPagamento.classList.remove("d-lg-block");
+                barraPagamento.classList.add("d-none");
             }
         });
 }
@@ -133,6 +134,12 @@ buyBtn.addEventListener("click", function () {
 // Riposizionare bottone pagamento
 var paySection = document.getElementById("paySection");
 var widthLg = window.matchMedia("(min-width: 992px)");
+
+if (widthLg.matches) {
+    barraPagamento.classList.remove("fixed-bottom");
+    barraPagamento.classList.add("rounded");
+    paySection.classList.add("position-fixed", "end-0");
+}
 
 window.addEventListener("resize", () => {
     if (widthLg.matches) {
