@@ -65,7 +65,7 @@
   transform: translateZ(-25px);
   background-color: #01060f;
   border-radius: 0 2px 2px 0;
-  box-shadow: -5px 0px 40px 10px #999;
+  box-shadow: -5px 0px 40px 10px #ddd;
 }
 
 .dvdCover-container-lg {
@@ -88,12 +88,59 @@
   width: 44px;
   height: 421px;
 }
+
+#right-column {
+  margin-top: 10px;
+}
   
 .dvdCover-lg::after {      
   top: -2px;
   left: 72px;
   width: 200px;
   height: 425px;
+}
+
+@media screen and (min-width:768px) {  
+  #left-column, #right-column {
+    position:sticky;
+    top:40px;
+  }
+
+  #right-column {
+    top:10px;
+    margin-top: -80px;    
+    padding-inline: 5px;
+  }
+
+  .dvdCover-container-lg {
+    
+    perspective: 600px;
+    margin-top: -60px;
+  }
+  
+  .dvdCover-lg, .dvdCover-lg > :first-child {
+    width: 134px;
+    height: 200px;
+  }
+    
+  .dvdCover-lg > :first-child {
+    box-shadow: 5px 5px 20px #666;
+  }
+    
+  .dvdCover-lg::before {
+    left: -60px;
+    top: -2px;
+    width: 19px;
+    height: 204px;
+  }
+    
+  .dvdCover-lg::after {      
+    top: -7px;
+    left: -4px;  
+    width: 125px;
+    height: 213px;
+    box-shadow: -10px 0 10px 10px #eee;
+  }
 }
 
 @media screen and (min-width:1200px) {    
@@ -118,7 +165,6 @@
     left: -5px;
     width: 200px;
     height: 308px;
-    box-shadow: -10px 0 50px 10px #666;
   }
 }
 /******************************************************* voti a stelle *********************************************************/
@@ -306,13 +352,53 @@ input::placeholder {
 
 /******************************************************* search.html *************************************************************************/
 
+#mobileSearchMenu p {
+  font-size: 14px;
+}
 
+.fa-angle-down {
+  font-size: 12px;
+}
 
+.offcanvas.rounded-top {
+  --bs-border-radius: 10px;
+}
 
+.offcanvas-header button {
+  color:teal;
+}
 
+#mobileSearch {
+  outline: none;
+  width: 90%;
+}
 
+.accordion-button {
+  --bs-accordion-btn-icon-width: 12px;
+  --bs-accordion-btn-focus-border-color: transparent;
+  --bs-accordion-active-color: black;
+  --bs-accordion-active-bg: transparent;
+    font-weight: 500;
+    font-size: 15px;
+}
 
+label[for="multi"], label[for="movie"], label[for="tv"]  {
+  background-color: #e4e4e4;
+  font-weight: normal;
+  width: 40px;
+}
 
+label[for="adventure"], label[for="animation"], label[for="comedy"], label[for="crime"], label[for="documentary"], label[for="drama"], label[for="family"], label[for="fantasy"], label[for="mistery"]  {
+  background-color: #e4e4e4;
+  font-weight: normal;
+  padding-inline:10px;
+}
+
+#multi:checked ~ label[for="multi"], #movie:checked ~ label[for="movie"], #tv:checked ~ label[for="tv"], #adventure:checked ~ label[for="adventure"], #animation:checked ~ label[for="animation"], #comedy:checked ~ label[for="comedy"], #crime:checked ~ label[for="crime"], #documentary:checked ~ label[for="documentary"], #drama:checked ~ label[for="drama"], #family:checked ~ label[for="family"], #fantasy:checked ~ label[for="fantasy"], #mistery:checked ~ label[for="mistery"] {
+  background-color: #c4e5f0;
+  border: 1px solid rgb(140, 243, 243);
+  color: teal;
+} 
 
 
 
@@ -350,19 +436,23 @@ input::placeholder {
   cursor: pointer;
 }
 
-label.btn-light {
+div.radios > label {
   width: 80px;
-  --bs-btn-active-bg: #e4e4e4;
+  height: 60px;
+  margin-inline: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
-label.btn:hover {
-  background-color: white;
+#blu-ray:checked ~ label[for="blu-ray"], #dvd:checked ~ label[for="dvd"], #d3D:checked ~ label[for="d3D"], #d4K:checked ~ label[for="d4K"] {
+  border: 5px solid teal;
+  font-weight: 700;
+  background-color:#c4e5f0;
 }
 
-#blu-ray:checked ~ #priceBlu-ray {
-  border-color: red!important;
-  --bs-border-width: 2px!important;
-
+#blu-ray:checked ~ label[for="blu-ray"] > span, #dvd:checked ~ label[for="dvd"] > span, #d3D:checked ~ label[for="d3D"] > span, #d4K:checked ~ label[for="d4K"] > span {
+  color:brown;
 }
 
 #title {
@@ -385,7 +475,6 @@ sup {
 
 #quantity {
   width: 60px;
-
 }
 
 #addToCart, #buyNow {
@@ -396,12 +485,19 @@ sup {
   background-color:darkorange;
 }
 
+#trailer {
+  height: calc(90vw/1.77);
+}
 
-
-
-@media screen and (min-width:768px) {    
-  div.col-12.col-md-3.order-2 {
-    margin-top: -120px;
+#bonus18 {
+  width: 10%;
+}
+@media screen and (min-width:768px) {
+  div.d-flex.flex-nowrap.flex-column.flex-md-row {
+    --bs-gutter-x: 0;
+  }
+  
+  #right-column {
     border: 1px solid #ddd;
     border-radius: 8px;
   }
@@ -409,15 +505,83 @@ sup {
   hr.d-none.d-md-block {
     margin-top: 32px;
   }
+
+  #trailer {    
+    height: calc(45vw/1.77);
+  }
+
+  #bonus18 {
+    width: 25%;
+  }
+
+  #overview, #review {
+    padding-right: 10px;
+  }
 }
 
+div.container-carousel:before, div.container-carousel:after {
+	box-sizing: border-box;
+}
+	
+div.container-carousel{
+	margin: 10px auto 30px;
+	width: 100px;
+	height: 150px;
+	position: relative;
+	perspective: 1000px;
+}
 
+#carousel{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	animation: rotation 20s infinite linear;
+}
 
+#carousel:hover{
+	animation-play-state: paused;
+}
 
+#carousel figure{
+	display: block;
+	position: absolute;
+	width: 100px;
+	height: 150px;
+	left: 10px;
+	top: 10px;
+	background: black;
+	overflow: hidden;
+	border: solid 5px black;
+}
 
+#carousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(180px);}
+#carousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(180px);}
+#carousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(180px);}
+#carousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(180px);}
+#carousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(180px);}
+#carousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(180px);}
+#carousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(180px);}
+#carousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(180px);}
+#carousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(180px);}
 
+div.container-carousel img{ 
+  width: 100px; 
+  height: 150px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
 
+div.container-carousel img:hover{
+    filter:grayscale(0);
+	  -webkit-filter: grayscale(0);
+    transform: scale(1.2,1.2);
+}
 
+@keyframes rotation{
+	from{transform: rotateY(0deg);}
+	to{transform: rotateY(360deg);}
+}
 
 
 
