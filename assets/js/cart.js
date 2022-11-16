@@ -6,6 +6,7 @@ var svuotaBtn = document.getElementById("svuota");
 var barraPagamento = document.getElementById("barraPagamento");
 var costoTotale = document.getElementById("costoTotale");
 var cartReview = document.getElementById("riepilogo");
+var numArticoli = document.getElementById("numArticoli");
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -71,7 +72,10 @@ function visualizzaCarrello() {
                     cartReview.appendChild(li);
                     li.innerHTML += element.title;
                 });
+                numArticoli.innerHTML += `<i class="fas fa-boxes"></i> Articoli nel carrello: ${arrayCart.length}`;
                 sommaPrezzi();
+            } else {
+                barraPagamento.classList.remove("d-lg-block")
             }
         });
 }
@@ -121,3 +125,30 @@ buyBtn.addEventListener("click", function () {
     });
     svuotaCarrello();
 })
+
+
+///////////////////////////////////////////// MEDIA QUERIES JS ///////////////////////////////////////////////
+
+
+// Riposizionare bottone pagamento
+var paySection = document.getElementById("paySection");
+var widthLg = window.matchMedia("(min-width: 992px)");
+
+window.addEventListener("resize", () => {
+    if (widthLg.matches) {
+        barraPagamento.classList.remove("fixed-bottom");
+        barraPagamento.classList.add("rounded");
+        paySection.classList.add("position-fixed", "end-0");
+    }
+})
+
+var fixWidth = window.matchMedia("(max-width: 991px)");
+
+window.addEventListener("resize", () => {
+    if (fixWidth.matches) {
+        barraPagamento.classList.add("fixed-bottom");
+        barraPagamento.classList.remove("rounded");
+        paySection.classList.remove("position-fixed", "end-0");
+    }
+})
+
