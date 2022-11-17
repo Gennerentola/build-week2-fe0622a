@@ -11,6 +11,42 @@
       "avatar": "./assets/img/avatar/05.png",
       "cart": [],
       "id": 1
+    },
+    {
+      "nome": "abdullah",
+      "cognome": "moglio",
+      "email": "giuliadellavecchia96@gmail.com",
+      "password": "lorenzo92#",
+      "indirizzo": "via del ciccio",
+      "citta": "roma",
+      "cap": "123",
+      "avatar": "./assets/img/avatar/06.png",
+      "cart": [],
+      "id": 2
+    },
+    {
+      "nome": "mio",
+      "cognome": "bau",
+      "email": "ciao@hotmail.it",
+      "password": "lorenzo92#",
+      "indirizzo": "via del ciccio",
+      "citta": "roma",
+      "cap": "123",
+      "avatar": "./assets/img/avatar/07.png",
+      "cart": [],
+      "id": 3
+    },
+    {
+      "nome": "giulia",
+      "cognome": "moglio",
+      "email": "ciarcia@hotmail.it",
+      "password": "lorenzo92#",
+      "indirizzo": "via del ciccio",
+      "citta": "roma",
+      "cap": "1234",
+      "avatar": "./assets/img/avatar/14.png",
+      "cart": [],
+      "id": 4
     }
   ]
 }
