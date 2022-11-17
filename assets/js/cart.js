@@ -8,9 +8,11 @@ var costoTotale = document.getElementById("costoTotale");
 var cartReview = document.getElementById("riepilogo");
 var numArticoli = document.getElementById("numArticoli");
 var idUtente = sessionStorage.getItem('id');
+var recapAddress = document.getElementById("indirizzoConsegna");
 var utente = JSON.parse(sessionStorage.getItem('utente'))
 
-window.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener("DOMContentLoaded", init);
 
 if(utente) {
    logged.style.display = "block";
@@ -33,7 +35,7 @@ function visualizzaCarrello() {
         })
         .then((data) => {
             arrayCart = data;
-            if (arrayCart.cart.length > 0) {
+            if (arrayCart.cart.length > 0 && arrayCart.cart.length) {
                 svuotaBtn.style.display = "block";
                 barraPagamento.classList.remove("d-none");
                 emptyCartPlaceholder.style.display = "none";
@@ -81,12 +83,14 @@ function visualizzaCarrello() {
                     dt.innerHTML += arrayCart.cart[i].title;
                     cartReview.appendChild(li);
                     li.innerHTML += arrayCart.cart[i].title;
+                    recapAddress.innerHTML = `Indirizzo di consegna: ${arrayCart.indirizzo} ${arrayCart.citta} ${arrayCart.cap}`;
                 };
                 numArticoli.innerHTML += `<i class="fas fa-boxes"></i> Articoli nel carrello: ${arrayCart.cart.length}`;
                 sommaPrezzi();
             } else {
                 barraPagamento.classList.remove("d-lg-block");
                 barraPagamento.classList.add("d-none");
+                return;
             }
         });
 }
@@ -152,16 +156,18 @@ var paySection = document.getElementById("paySection");
 var widthLg = window.matchMedia("(min-width: 992px)");
 
 if (widthLg.matches) {
-    barraPagamento.classList.remove("fixed-bottom");
-    barraPagamento.classList.add("rounded");
-    paySection.classList.add("position-fixed", "end-0", "border", "rounded");
+    barraPagamento.classList.remove("fixed-bottom", "d-flex");
+    barraPagamento.classList.add("rounded", "border");
+    paySection.classList.add("position-fixed", "end-0");
+    barraPagamento.classList.add("d-block");
 }
 
 window.addEventListener("resize", () => {
     if (widthLg.matches) {
-        barraPagamento.classList.remove("fixed-bottom");
-        barraPagamento.classList.add("rounded");
-        paySection.classList.add("position-fixed", "end-0", "border", "rounded");
+        barraPagamento.classList.remove("fixed-bottom", "d-flex");
+        barraPagamento.classList.add("rounded", "border");
+        paySection.classList.add("position-fixed", "end-0");   
+        barraPagamento.classList.add("d-block");
     }
 })
 
@@ -169,9 +175,10 @@ var fixWidth = window.matchMedia("(max-width: 991px)");
 
 window.addEventListener("resize", () => {
     if (fixWidth.matches) {
-        barraPagamento.classList.add("fixed-bottom");
-        barraPagamento.classList.remove("rounded");
-        paySection.classList.remove("position-fixed", "end-0", "border", "rounded");
+        barraPagamento.classList.add("fixed-bottom", "d-flex");
+        barraPagamento.classList.remove("rounded", "border");
+        paySection.classList.remove("position-fixed", "end-0");    
+        barraPagamento.classList.remove("d-block");
     }
 })
 

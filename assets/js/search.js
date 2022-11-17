@@ -4,7 +4,7 @@ var total;
 var pages;
 var call;
 var searchtype;	
-var rate = [];
+var vote = [];
 
 var startLimit = 3;
 var following = [];
@@ -46,6 +46,16 @@ else {							//
 }								//
 date.setMonth(month);			//
 //////////////////////////////////
+
+
+var utente = JSON.parse(sessionStorage.getItem('utente'))
+
+if(utente) {
+   logged.style.display = "block";
+  //aggiunta dell'avatar scelto al momento della registrazione al login
+   saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
+  saluto.classList.remove("interactiveBtn");
+}
 
 multiRadio.addEventListener("change", function(e) {
 	e.preventDefault();
@@ -192,14 +202,14 @@ function startSearchByGenre(genresMovie, genresTv) {
 			let dvdTitle = document.createElement('h3');
 			dvdTitle.className = "fs-6 text-start mt-sm-3";
 			dvdTitle.innerHTML = ((pageItems[i].title == null) ? pageItems[i].name : pageItems[i].title);
-			rate[i] = Math.ceil(pageItems[i].vote_average);
+			vote[i] = Math.ceil(pageItems[i].vote_average);
 			let dvdRate = document.createElement('div');
 			dvdRate.className = "comp-rate";
 			let divStars = document.createElement('div');
 			let spanStars = document.createElement('span');
 			spanStars.className = "score";
 			divStars.appendChild(spanStars);
-			let rateRadio1 = document.createElement('input');
+			let rateRadio1 = document.createElement('input');/*
 			rateRadio1.type = "radio";
 			rateRadio1.className = "rate";
 			rateRadio1.name = "rate";
@@ -212,7 +222,7 @@ function startSearchByGenre(genresMovie, genresTv) {
 			let rateRadio8 = rateRadio1.cloneNode(true);;
 			let rateRadio9 = rateRadio1.cloneNode(true);;
 			let rateRadio10 = rateRadio1.cloneNode(true);;
-			dvdRate.append(divStars, rateRadio1, rateRadio2, rateRadio3, rateRadio4, rateRadio5, rateRadio6, rateRadio7, rateRadio8, rateRadio9, rateRadio10);
+			dvdRate.append(divStars, rateRadio1, rateRadio2, rateRadio3, rateRadio4, rateRadio5, rateRadio6, rateRadio7, rateRadio8, rateRadio9, rateRadio10);*/
 			dvdInfo.append(dvdTitle, dvdRate);
 			showcase.append(elementCover, dvdInfo);			
 		}					
@@ -235,21 +245,21 @@ function startSearching(keywords) {
 		call = 'https://api.themoviedb.org/3/search/multi?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&include_adult=false&query=' + keywords + "&page=";
 		fetch(call+1).then((response) => {
 				return response.json();			
-			}).then((data) => {
+			}).then(async (data) => {
 				pageItems = data.results;
 				let total = data.total_results;
 				let pages = data.total_pages;
 				let currentPage = data.page;
 				if (pageItems) {
-					getFullList(call, pages);
-					setTimeout( () => {
+					await getFullList(call, pages);
+					//setTimeout( () => {
 						console.log(pageItems);							////////////////cancellabile/////////////////////
 						trimMovieList(pageItems);
 						pageItems.sort(compare);
 						removeDuplicates(pageItems);                   //necessario solo su multi-ricerca
 						searchField.value = "";				
 						table.innerHTML = "";
-						//console.table(pageItems);
+						//console.table(pageItems);						
 						for (i=0; i < pageItems.length; i++) {
 							let showcase = document.createElement('div');
 							showcase.className = "col-12 col-sm-4 col-lg-3 pe-0 ps-2 ps-sm-4 d-flex justify-content-around flex-sm-column align-items-sm-baseline ps-md-5 align-items-lg-start";
@@ -271,34 +281,35 @@ function startSearching(keywords) {
 							let dvdTitle = document.createElement('h3');
 							dvdTitle.className = "fs-6 text-start mt-sm-3";
 							dvdTitle.innerHTML = ((pageItems[i].title == null) ? pageItems[i].name : pageItems[i].title);
-							rate[i] = Math.ceil(pageItems[i].vote_average);
+							vote[i] = Math.ceil(pageItems[i].vote_average);
 							let dvdRate = document.createElement('div');
 							dvdRate.className = "comp-rate";
 							let divStars = document.createElement('div');
 							let spanStars = document.createElement('span');
 							spanStars.className = "score";
 							divStars.appendChild(spanStars);
-							let rateRadio1 = document.createElement('input');
-							rateRadio1.type = "radio";
-							rateRadio1.className = "rate";
-							rateRadio1.name = "rate";
-							let rateRadio2 = rateRadio1.cloneNode(true);
-							let rateRadio3 = rateRadio1.cloneNode(true);;
-							let rateRadio4 = rateRadio1.cloneNode(true);;		// va aggiunta funzionalità accensione stelle
-							let rateRadio5 = rateRadio1.cloneNode(true);;
-							let rateRadio6 = rateRadio1.cloneNode(true);;
-							let rateRadio7 = rateRadio1.cloneNode(true);;
-							let rateRadio8 = rateRadio1.cloneNode(true);;
-							let rateRadio9 = rateRadio1.cloneNode(true);;
-							let rateRadio10 = rateRadio1.cloneNode(true);;
-							dvdRate.append(divStars, rateRadio1, rateRadio2, rateRadio3, rateRadio4, rateRadio5, rateRadio6, rateRadio7, rateRadio8, rateRadio9, rateRadio10);
-							rateRadio4.setAttribute("checked", "true");
-							
-
+							let rateRadio = [];
+							rateRadio[1] = document.createElement('input');
+							rateRadio[1].type = "radio";
+							rateRadio[1].className = "rate";
+							rateRadio[1].name = "rate" + [i];
+							rateRadio[2] = rateRadio[1].cloneNode(true);
+							rateRadio[3] = rateRadio[1].cloneNode(true);
+							rateRadio[4] = rateRadio[1].cloneNode(true);
+							rateRadio[5] = rateRadio[1].cloneNode(true);
+							rateRadio[6] = rateRadio[1].cloneNode(true);
+							rateRadio[7] = rateRadio[1].cloneNode(true);
+							rateRadio[8] = rateRadio[1].cloneNode(true);
+							rateRadio[9] = rateRadio[1].cloneNode(true);
+							rateRadio[10] = rateRadio[1].cloneNode(true);
+							dvdRate.append(divStars, rateRadio[10], rateRadio[9], rateRadio[8], rateRadio[7], rateRadio[6], rateRadio[5], rateRadio[4], rateRadio[3], rateRadio[2], rateRadio[1]);
+							rateRadio[vote[i]].checked = true;							
+							/*for (k = 1; k <= vote[i]; k++) {
+								rateRadio[k].classList.add("voted");
+							}*/
 							dvdInfo.append(dvdTitle, dvdRate);
 							showcase.append(elementCover, dvdInfo);						
-						}					
-					}, (total/0.8)); //// (500 per movies o tv - 1500 per multi)					
+						}											
 				}
 				else {
 					console.log("a");
@@ -312,9 +323,9 @@ function startSearching(keywords) {
 }
 
 
-function getFullList(call, lastPage) {
+async function getFullList(call, lastPage) {
 	for (i = 2; i <= lastPage; i++) {
-		fetch(call + i).then((response) => {
+		await fetch(call + i).then((response) => {
 			return response.json();			
 		}).then((data) => {
 			let answer = data;

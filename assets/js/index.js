@@ -95,8 +95,8 @@
     var productsCarousel = new Carousel('products', 5);
   }
 
-  var utente = JSON.parse(sessionStorage.getItem('utente'))
-  
+var utente = JSON.parse(sessionStorage.getItem('utente'))
+
 if(utente) {
    logged.style.display = "block";
   //aggiunta dell'avatar scelto al momento della registrazione al login
