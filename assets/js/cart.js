@@ -60,7 +60,9 @@ function visualizzaCarrello() {
                     recapImg.setAttribute("alt", "poster");
                     recapImg.style.width = "15%";
                     var span = document.createElement("span");
-                    span.classList.add("float-end", "fs-3", "prezzoSingolo")
+                    span.classList.add("float-end");
+                    span.classList.add("fs-3");
+                    span.classList.add("prezzoSingolo");
                     span.innerHTML = `${arrayCart.cart[i].price.toFixed(2)}€`;
                     var small = document.createElement("small");
                     small.classList.add("float-end", "fs-3");
@@ -102,7 +104,7 @@ function sommaPrezzi() {
     let somma = 0;
 
     for (let i = 0; i < arrayPrezzi.length; i++)
-        somma += Number(arrayPrezzi[i].innerHTML);
+        somma += parseFloat(arrayPrezzi[i].innerHTML);
     costoTotale.innerHTML = `${somma.toFixed(2)}€`;
 }
 
