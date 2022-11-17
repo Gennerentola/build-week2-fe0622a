@@ -265,7 +265,7 @@ input::placeholder {
 
 .dropdown-menu {
   --bs-dropdown-link-hover-bg: #fca72f;
-  --bs-dropdown-link-hover-color: #0c41aa;
+  --bs-dropdown-link-hover-color: white;
   border: 2px solid #fca72f;
 }
 
@@ -572,75 +572,16 @@ div.container-carousel img:hover{
 
 
 /******************************************************** register.html *************************************************************************/
-/* #registration_body {
-  background-color: #0b41aa;
+#main_registrazione {
+  background-image: url(/assets/img/pattern.jpg);
 }
-#form {
-  background-color: #fca72f;
-  box-shadow: 1px 5px 3px blue;
-}
-
-#icona_password {
-  cursor: pointer;
-}
-
-#menu_drop img {
-  width: 30px;
-}
-#menu_drop ul {
-  display: flex;
-  align-items: center;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none; 
-
-}
-
-#menu_drop ul::-webkit-scrollbar {
-  display: none;
-}
-
-#menu_drop li {
-  list-style: none;
-}
-.avatar1 {
-  display: none;
-}
-
-.mostra {
-  display: block;
-  height: 80px;
-} */
-/* tooltip per password */
-/*
-.hideTooltip {
-    display: none;
-}
-.showTooltip {
-display: initial;
-}
-*/
-/* animazione avatar e rimozione radio button */
-/*
-.avatar {
-  cursor: pointer;
-}
-
-.avatar:active {
-    transform: translateY(4px);
-}
-
-
-*/
 
 #form label, #form input {
   color: #0c41aa;
 }
-#registration_body {
-  background-color: #0b41aa;
-}
 #form {
   background-color: #fca72f;
+  margin-block: 24px;
 }
 
 #menu_drop img {

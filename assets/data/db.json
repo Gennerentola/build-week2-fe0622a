@@ -10,11 +10,25 @@
       "cap": "123",
       "avatar": "./assets/img/avatar/03.png",
       "id": 1
+    },
+    {
+      "nome": "abdullah",
+      "cognome": "moglio",
+      "email": "ciaociao@hotmail.it",
+      "password": "lorenzo92#",
+      "indirizzo": "via del ciccio",
+      "citta": "h",
+      "cap": "123",
+      "avatar": "./assets/img/avatar/04.png",
+      "id": 2
     }
   ],
   "cart": [
     {
       "id": 1
+    },
+    {
+      "id": 2
     }
   ]
 }

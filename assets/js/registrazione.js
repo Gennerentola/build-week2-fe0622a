@@ -144,7 +144,7 @@ function controlEmail(user) {
       //controllo se la nuova email inserita è gia stata registrata
       if (email.includes(mail) == false) {
         aggiungi(user);
-        location.href= 'navbar2.html';
+        location.href= 'index.html';
       } else {
         document.getElementById('errore').innerHTML='Controlla i dati inseriti'
       }
