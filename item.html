@@ -76,10 +76,10 @@
                             <input type="radio" class="d-none" name="diskType" id="dvd" checked="on">  <!-- va levato l'aria-pressed da js -->
                             <input type="radio" class="d-none" name="diskType" id="d3D">
                             <input type="radio" class="d-none" name="diskType" id="d4K">
-                            <label class="d-flex flex-column justify-content-center" onclick="check('blu-ray')" for="blu-ray">Blu-ray<br><span id="priceBlu-ray">10.90€</span></label>
-                            <label class="d-flex flex-column justify-content-center" onclick="check('dvd')" for="dvd">DVD<br><span id="priceDVD">10.90€</span></label>
-                            <label class="d-flex flex-column justify-content-center" onclick="check('d3D')" for="d3D">3D<br><span id="price3D">10.90€</span></label>
-                            <label class="d-flex flex-column justify-content-center" onclick="check('d4K')" for="d4K">4K<br><span id="price4K">10.90€</span></label>                            
+                            <label class="d-flex flex-column justify-content-center priceReload" onclick="setPrice(this.children[1].textContent)" for="blu-ray">Blu-ray<br><span id="priceBlu-ray"></span></label>
+                            <label class="d-flex flex-column justify-content-center priceReload" onclick="setPrice(this.children[1].textContent)" for="dvd">DVD<br><span id="priceDVD"></span></label>
+                            <label class="d-flex flex-column justify-content-center priceReload" onclick="setPrice(this.children[1].textContent)" for="d3D">3D<br><span id="price3D"></span></label>
+                            <label class="d-flex flex-column justify-content-center priceReload" onclick="setPrice(this.children[1].textContent)" for="d4K">4K<br><span id="price4K"></span></label>                            
                         </div>
                     </div>                   
                 </div>

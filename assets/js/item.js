@@ -8,6 +8,20 @@ const catalog2 = "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/";
 var content;
 var analysis;
 var recommendation;
+var date;
+var priceBluRay = document.getElementById("priceBlu-ray");
+var priceDvD = document.getElementById("priceDVD");
+var price3D = document.getElementById("price3D");
+var price4K = document.getElementById("price4K");
+var pBR;
+var pDVD;
+var p3D;
+var p4K;
+var amountDVD;
+var amountBR;
+var amount3D;
+var amount4K;
+var item;
 const today = new Date();
 const tomorrow = new Date();
 tomorrow.setDate(today.getDate() + 1);
@@ -18,6 +32,20 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 function check(id) {
     console.log(id);        /* va messa la funzione per comprare e cambiare i tag .price */   
+}
+
+class Item {
+    constructor(_priceDVD, _priceBR, _price3D, _price4K, _amountDVD, _amountBR, _amount3D, _amount4K, _id) {      
+      this.priceDVD = _priceDVD;
+      this.priceBR = _priceBR;
+      this.price3D = _price3D;
+      this.price4K = _price4K;
+      this.amountDVD = _amountDVD;
+      this.amountBR = _amountBR;
+      this.amount3D = _amount3D;
+      this.amount4K = _amount4K;
+      this.id = _id     
+    }
 }
 
 window.addEventListener("DOMContentLoaded", getContent);
@@ -50,14 +78,120 @@ function recommend() {
     });
 }
 
-function getContent() {
+function checkStore() {
+    fetch('http://localhost:3000/item/' + id).then((response) => {
+            if(!response.ok) {                
+                if ((today.getFullYear() - date.getFullYear()) < 2) {
+                    pBR = 19.90;
+                    pDVD = 14.90;
+                    p3D = 24.90;
+                    p4K = 29.90;
+                }
+                else if ((today.getFullYear() - date.getFullYear()) < 4) {
+                    pBR = 16.90;
+                    pDVD = 9.90;
+                    p3D = 19.90;
+                    p4K = 25.90;
+                }
+                else if ((today.getFullYear() - date.getFullYear()) < 8) {
+                    pBR = 14.90;
+                    pDVD = 7.90;
+                    p3D = 18.90;
+                    p4K = 25.90;
+                }
+                else if ((today.getFullYear() - date.getFullYear()) < 12) {
+                    pBR = 14.90;
+                    pDVD = 7.90;
+                    p3D = 18.90;
+                    p4K = 0;
+                }
+                else if ((today.getFullYear() - date.getFullYear()) < 20) {
+                    pBR = 14.90;
+                    pDVD = 6.90;
+                    p3D = 16.90;
+                    p4K = 0;
+                }
+                else {
+                    pBR = 14.90;
+                    pDVD = 5.90;
+                    p3D = 0;
+                    p4K = 0;
+                }
+                priceBluRay.innerText = pBR + "€";
+                priceDvD.innerText = pDVD + "€";
+                price3D.innerText = p3D + "€";
+                price4K.innerText = p4K + "€";
+                amountDVD = Math.floor(Math.random()*10);
+                amountBR = Math.floor(Math.random()*10);
+                amount3D = Math.floor(Math.random()*10);
+                amount4K = Math.floor(Math.random()*10);
+                item = new Item(pDVD, pBR, p3D, p4K, amountDVD, amountBR, amount3D, amount4K, id);
+                addItem(item);
+            }
+            else {
+                return response.json();	
+            }					
+		}).then((data) => {
+            if (data) {
+                item = data;
+                priceBluRay.innerText = item.priceBR.toFixed(2) + "€";                
+                priceDvD.innerText = item.priceDVD.toFixed(2) + "€";
+                price3D.innerText = item.price3D.toFixed(2) + "€";
+                price4K.innerText = item.price4K.toFixed(2) + "€";
+                amountDVD = item.amountDVD;
+                amountBR = item.amountBR;
+                amount3D = item.amount3D;
+                amount4K = item.amount4K;
+                if (amountDVD == 0) {
+                    priceDvD.parentElement.classList.add("d-none");
+                    priceDvD.parentElement.classList.remove("d-flex");
+                }
+                if (amountBR == 0) {
+                    priceBluRay.parentElement.classList.add("d-none");
+                    priceBluRay.parentElement.classList.remove("d-flex");
+                }
+                if (price3D.innerText == "0.00€" || amount3D == 0) {
+                    price3D.parentElement.classList.add("d-none");
+                    price3D.parentElement.classList.remove("d-flex");
+                }
+                if (price4K.innerText == "0.00€" || amount4K == 0) {
+                    price4K.parentElement.classList.add("d-none");
+                    price4K.parentElement.classList.remove("d-flex");
+                }
+                setPrice(item.priceDVD.toFixed(2) + "€");                                 
+            }             
+        });
+}
+
+function setPrice(x) {
+    document.querySelectorAll(".price")[0].innerText = x;    
+    document.querySelectorAll(".price")[1].innerText = x;
+}
+
+
+async function addItem(item) {
+	let response = await fetch('http://localhost:3000/item/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		},
+		body: JSON.stringify(item)
+	});
+}
+
+
+
+function getContent() {    
     fetch('https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&append_to_response=videos').then((response) => {
 			return response.json();			
 		}).then((data) => {
 			content = data;
+            date = ((type == "movie") ? content.release_date : content.first_air_date);
+            date = new Date(date); 
+            checkStore();
             let rate = Math.ceil(content.vote_average);
-            setTimeout(review(),200);
-            recommend();
+            setTimeout(review(),600);
+            recommend();            
             switch (rate) {
                 case 10 :
                     document.querySelectorAll(".rate")[0].checked = "true";
@@ -104,6 +238,8 @@ function getContent() {
             }
             else {
                 document.getElementById("trailer").parentElement.innerHTML = `<img class="px-2" src="${catalog2}${content.backdrop_path}" width="100%" style="border-radius:40px"/>`;
-            }
+            }          
+            
+
     });    
 }
