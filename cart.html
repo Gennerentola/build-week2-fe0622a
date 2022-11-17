@@ -14,120 +14,164 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg blue">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold me-5 yellow" href="#"><img src="assets/img/logo2.png" width="100"
-                        height="50" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="respo">
-                        <li class="list-unstyled"><a href="#"></a></li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown yellow" id="film" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Film</a>
-                            <ul class="dropdown-menu blue" id="categorieFilm">
-                                <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Signore</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Dio</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Croce</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Merda</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown yellow" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Serie&#8209;TV</a>
-                            <ul class="dropdown-menu blue" id="categorieSerie">
-                                <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Signore</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Dio</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Croce</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Merda</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link yellow" href="#" role="button"
-                                aria-expanded="false">Ultimi&nbsp;arrivi</a>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link yellow" href="#" role="button"
-                                aria-expanded="false">I&nbsp;più&nbsp;popolari</a>
-                        </li>
-                    </ul>
-                    <form class="container-fluid">
-                        <div class="input-group">
-                            <span class="input-group-text bg-white"><a href="#"><i
-                                        class="fas fa-search bg-white"></i></a></span>
-                            <input id="search_bar" type="text" class="form-control shadow-none" placeholder="Cerca..."
-                                aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                    </form>
-                    <li class="list-unstyled"><a href="#"><i class="fas fa-shopping-cart yellow"></i></a></li>
-                    <li class="nav-item dropdown list-unstyled" id="respoSaluto">
-                        <a id="saluto" class="nav-link dropdown me-5 ms-2 yellow d-flex" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Login</a>
-                        <ul class="dropdown-menu blue">
-                            <form class="formLogin">
-                                <input class="dropdown-item text-warning bg-primary " id="user" type="text"
-                                    name="username" placeholder="Username" required>
-                                <input class="dropdown-item text-warning bg-primary" id="password" type="password"
-                                    name="password" placeholder="Password" required>
-                                <p class="text-danger text-center" id="erroreLogin"></p>
-                                <button type="button" class="btn mx-5 yellow" id="btnLogin">Accedi</button>
-                            </form>
-                            <div id="formLogged">
-                                <li><a class="dropdown-item yellow" href="#"><i
-                                            class="fas fa-cog m-1"></i>Impostazioni</a></li>
-                                <li><a class="dropdown-item yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a>
-                                </li>
-                                <li><a class="dropdown-item yellow" href="#"><i
-                                            class="fas fa-envelope m-1"></i>Messaggi</a></li>
-                                <li><a class="dropdown-item yellow" href="#" id="logout"><i
-                                            class="fas fa-running m-1"></i>Logout</a></li>
-                            </div>
-                        </ul>
+          <div class="container-fluid">
+            <a class="navbar-brand fw-bold me-5 yellow" href="#"
+              ><img src="assets/img/logo2.png" width="100" height="50" alt=""
+            /></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0" id="respo">
+                <li class="list-unstyled"><a href="#"></a></li>
+                <li class="nav-item dropdown list-unstyled">
+                  <a
+                    class="nav-link dropdown yellow"
+                    id="film"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Film</a
+                  >
+                  <ul class="dropdown-menu blue" id="categorieFilm">
+                    <li><a class="dropdown-item yellow" href="#">Azione</a></li>
+                    <li>
+                      <a class="dropdown-item yellow" href="#">Romantico</a>
                     </li>
-                    <form id="formRespo" class="container-fluid mt-3">
-                        <div class="row" id="salutoRespo">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Username" id="userRespo">
-                            </div>
-                            <div class="col">
-                                <input type="password" class="form-control" placeholder="Password" id="passRespo">
-                            </div>
-                            <div class="col" id="loginRespo">
-
-                                <a href="#" class="btn yellow" id="accediRespo">Accedi</a>
-                                <a href="#" class="btn formLogin yellow" id="registratiRespo">Registrati</a>
-                            </div>
-                            <p class="text-danger" id="erroreRespo"></p>
-                        </div>
-                    </form>
-                    <div id="paragrafoRespo">
-                        <p class="yellow m-3"><span id="salutoUtente"></span></p>
-                    </div>
-                    <div id="userMenuRespo">
-                        <a class="nav-link yellow ms-2" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a>
-                        <a class="nav-link yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a>
-                        <a class="nav-link yellow" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a>
-                        <a class="nav-link yellow btn" id="logoutRespo"><i class="fas fa-running m-1"></i>Logout</a>
-                    </div>
-                    <a href="#" class="btn formLogin yellow mx-3" id="registrati">Registrati</a>
-
-
+                    <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Signore</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Dio</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Croce</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Merda</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown list-unstyled">
+                  <a
+                    class="nav-link dropdown yellow"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    >Serie&#8209;TV</a
+                  >
+                  <ul class="dropdown-menu blue" id="categorieSerie">
+                    <li><a class="dropdown-item yellow" href="#">Azione</a></li>
+                    <li>
+                      <a class="dropdown-item yellow" href="#">Romantico</a>
+                    </li>
+                    <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Signore</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Dio</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Croce</a></li>
+                    <li><a class="dropdown-item yellow" href="#">Merda</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown list-unstyled">
+                  <a
+                    class="nav-link yellow"
+                    href="#"
+                    role="button"
+                    aria-expanded="false"
+                    >Ultimi&nbsp;arrivi</a
+                  >
+                </li>
+                <li class="nav-item dropdown list-unstyled">
+                  <a
+                    class="nav-link yellow"
+                    href="#"
+                    role="button"
+                    aria-expanded="false"
+                    >I&nbsp;più&nbsp;popolari</a
+                  >
+                </li>
+              </ul>
+              <form class="container-fluid">
+                <div class="input-group">
+                  <span class="input-group-text bg-white"
+                    ><a href="#"><i class="fas fa-search bg-white"></i></a
+                  ></span>
+                  <input
+                    id="search_bar"
+                    type="text"
+                    class="form-control shadow-none"
+                    placeholder="Cerca..."
+                    aria-label="Username"
+                    aria-describedby="basic-addon1" />
                 </div>
+              </form>
+              <li class="list-unstyled">
+                <a href="#"><i class="fas fa-shopping-cart yellow"></i></a>
+              </li>
+              <li class="nav-item dropdown list-unstyled" id="respoSaluto">
+                <a
+                  id="saluto"
+                  class="btn nav-link dropdown mt-1 me-3 ms-2 p-1 yellow d-flex interactiveBtn"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Login</a
+                >
+                <ul class="dropdown-menu blue">
+                  <form class="formLogin">
+                    <input
+                      class="bg-white dropdown-item text-warning bg-primary form-control shadow-none"
+                      id="user"
+                      type="text"
+                      name="username"
+                      placeholder="Username"
+                      required />
+                    <input
+                      class="bg-white dropdown-item text-warning bg-primary form-control shadow-none"
+                      id="password"
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      required />
+                    <p class="text-danger text-center" id="erroreLogin"></p>
+                    <button type="button" class="btn mx-5 yellow" id="btnLogin">
+                      Accedi
+                    </button>
+                  </form>
+                  <div id="formLogged">
+                    <li>
+                      <a class="dropdown-item yellow" href="#"
+                        ><i class="fas fa-cog m-1"></i>Impostazioni</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item yellow" href="#"
+                        ><i class="fas fa-user m-1"></i>Profilo</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item yellow" href="#"
+                        ><i class="fas fa-envelope m-1"></i>Messaggi</a
+                      >
+                    </li>
+                    <li><hr class="dropdown-divider" id="divider"></li>
+                    <li>
+                      <a class="dropdown-item yellow" href="#" id="logout"><i class="fas fa-running m-1"></i>Logout</a>
+                    </li>
+                  </div>
+                </ul>
+              </li>
+  
+                <a href="#" class="btn formLogin yellow interactiveBtn" id="registrati">Registrati</a>
             </div>
+          </div>
         </nav>
-
-    </header>
+      </header>
 
     <main>
 
@@ -240,12 +284,10 @@
         </div>
     </footer>
 
+    <script src="assets/js/nav2.js"></script>
     <script src="https://kit.fontawesome.com/0ff7ae3867.js" crossorigin="anonymous"></script>
-    <script src="assets/js/nav.js"></script>
     <script src="assets/js/cart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 </body>
 

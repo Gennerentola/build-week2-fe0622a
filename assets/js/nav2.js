@@ -55,7 +55,7 @@ function sessionStart() {
         e.preventDefault();
         logged.style.display = "none";
         for (i = 0; i < login.length; i++) {
-            login[i].style.display = "inline";
+            login[i].style.display = "inline-block";
             saluto.innerHTML = "Login";
             saluto.classList.add("interactiveBtn");
             formClear();

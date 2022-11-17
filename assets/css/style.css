@@ -227,8 +227,8 @@ color:#c79650;
   --bs-nav-link-hover-color: #c79650;
 }
 
-input::placeholder {
-  color:#fca72f;
+#form_login input::placeholder, #form_login input  {
+  color:#0c41aa;
 }
 
 #search_bar, .input-group-text {
@@ -264,8 +264,6 @@ input::placeholder {
 }
 
 .dropdown-menu {
-  --bs-dropdown-link-hover-bg: #fca72f;
-  --bs-dropdown-link-hover-color: white;
   border: 2px solid #fca72f;
 }
 
@@ -295,6 +293,7 @@ input::placeholder {
 }
 #saluto {
   margin-left: 20px !important;
+  padding: 6px;
 }
 
 /**********************************************************************************************************************************************/
