@@ -11,14 +11,16 @@ var idUtente = sessionStorage.getItem('id');
 var recapAddress = document.getElementById("indirizzoConsegna");
 var utente = JSON.parse(sessionStorage.getItem('utente'))
 
-
 window.addEventListener("DOMContentLoaded", init);
 
-if(utente) {
-   logged.style.display = "block";
-  //aggiunta dell'avatar scelto al momento della registrazione al login
-   saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
-  saluto.classList.remove("interactiveBtn");
+if (utente) {
+    logged.style.display = "block";
+    //aggiunta dell'avatar scelto al momento della registrazione al login
+    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
+    saluto.classList.remove("interactiveBtn");
+    login.forEach(element => {
+        element.style.display = "none";
+    })
 }
 
 
@@ -59,10 +61,10 @@ function visualizzaCarrello() {
                     recapImg.style.width = "15%";
                     var span = document.createElement("span");
                     span.classList.add("float-end", "fs-3", "prezzoSingolo")
-                    span.innerHTML = arrayCart.cart[i].price;
+                    span.innerHTML = `${arrayCart.cart[i].price.toFixed(2)}€`;
                     var small = document.createElement("small");
                     small.classList.add("float-end", "fs-3");
-                    small.innerHTML = arrayCart.cart[i].price;
+                    small.innerHTML = arrayCart.cart[i].price.toFixed(2);
                     var li = document.createElement("li");
                     li.classList.add("list-group-item");
                     var removeBtn = document.createElement("button");
@@ -101,7 +103,7 @@ function sommaPrezzi() {
 
     for (let i = 0; i < arrayPrezzi.length; i++)
         somma += Number(arrayPrezzi[i].innerHTML);
-    costoTotale.innerHTML = `${somma}€`;
+    costoTotale.innerHTML = `${somma.toFixed(2)}€`;
 }
 
 async function rimuovi(id) {
