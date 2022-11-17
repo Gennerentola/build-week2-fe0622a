@@ -1,48 +1,19 @@
 {
   "user": [
     {
-      "nome": "mio",
-      "cognome": "moglio",
-      "email": "ciarcia92@hotmail.it",
-      "password": "lorenzo96#",
-      "indirizzo": "via del ciccio",
-      "citta": "roma",
-      "cap": "123",
-      "avatar": "./assets/img/avatar/03.png",
-      "id": 1
-    },
-    {
       "nome": "abdullah",
       "cognome": "moglio",
       "email": "ciaociao@hotmail.it",
       "password": "lorenzo92#",
       "indirizzo": "via del ciccio",
-      "citta": "h",
-      "cap": "123",
-      "avatar": "./assets/img/avatar/04.png",
-      "id": 2
-    },
-    {
-      "nome": "abdullah",
-      "cognome": "moglio",
-      "email": "blabla@hotmail.it",
-      "password": "lorenzo92#",
-      "indirizzo": "via del ciccio",
       "citta": "roma",
-      "cap": "1234",
-      "avatar": "./assets/img/avatar/03.png",
-      "id": 3
+      "cap": "123",
+      "avatar": "./assets/img/avatar/14.png",
+      "cart": {
+        "nome": "cwf"
+      },
+      "id": 1
     }
   ],
-  "cart": [
-    {
-      "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    }
-  ]
+  "cart": []
 }
