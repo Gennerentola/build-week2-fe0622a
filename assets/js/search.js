@@ -28,7 +28,7 @@ var mistery = document.getElementById("mistery");			//
 var mobileSearch = document.getElementById("mobileSearch");
 
 let table = document.getElementById("tableRow");
-var searchField = document.getElementById("keywords");   				////// va cambiato in "search_bar"
+var searchField = document.getElementById("search_bar");   				////// va cambiato in "search_bar"
 const catalog = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
 var a;																	// si può levare
 //////////////////////////////////
@@ -223,14 +223,13 @@ function startSearchByGenre(genresMovie, genresTv) {
 searchField.addEventListener("keypress", (e) => {
 	if (searchField.value) {	
 		if (e.key === "Enter") {
-			e.preventDefault();
-			console.log("ok");				
+			e.preventDefault();			
 			startSearching(searchField.value);			
 		}
 	}
 })
 
-function startSearching(keywords) {	
+async function startSearching(keywords) {	
 	if (keywords) {	
 		call = 'https://api.themoviedb.org/3/search/multi?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&include_adult=false&query=' + keywords + "&page=";
 		fetch(call+1).then((response) => {

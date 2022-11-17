@@ -31,6 +31,7 @@ function sessionStart() {
             for (i = 0; i < elencoUser.length; i++) {
                 //controllo dell'email e password al momento del login
                 if (elencoUser[i].email === user.value && elencoUser[i].password === password.value) {
+                    sessionStorage.setItem('id', elencoUser[i].id);
                     logged.style.display = "block";
                     //aggiunta dell'avatar scelto al momento della registrazione al login
                     saluto.innerHTML = `<img src="${elencoUser[i].avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${elencoUser[i].nome}`;
@@ -46,9 +47,6 @@ function sessionStart() {
             }
         })
 }
-
-
-
 
 //funzione di logout
     btnLogout.addEventListener('click', function (e) {
