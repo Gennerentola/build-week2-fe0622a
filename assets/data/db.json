@@ -3,17 +3,14 @@
     {
       "nome": "abdullah",
       "cognome": "moglio",
-      "email": "ciaociao@hotmail.it",
+      "email": "ciarcia92@hotmail.it",
       "password": "lorenzo92#",
       "indirizzo": "via del ciccio",
       "citta": "roma",
-      "cap": "123",
+      "cap": "1234",
       "avatar": "./assets/img/avatar/14.png",
-      "cart": {
-        "nome": "cwf"
-      },
+      "cart": {},
       "id": 1
     }
-  ],
-  "cart": []
+  ]
 }

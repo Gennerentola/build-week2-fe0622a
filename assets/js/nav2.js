@@ -29,15 +29,15 @@ function sessionStart() {
         .then((data) => {
             elencoUser = data;
             for (i = 0; i < elencoUser.length; i++) {
+                //controllo dell'email e password al momento del login
                 if (elencoUser[i].email === user.value && elencoUser[i].password === password.value) {
                     logged.style.display = "block";
-                    saluto.innerHTML = `<img src="${elencoUser[i].avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"
-                    > Ciao,&nbsp;${elencoUser[i].nome}`;
+                    //aggiunta dell'avatar scelto al momento della registrazione al login
+                    saluto.innerHTML = `<img src="${elencoUser[i].avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${elencoUser[i].nome}`;
                     saluto.classList.remove("interactiveBtn");
                     for (i = 0; i < login.length; i++) {
                         login[i].style.display = "none";
-                    }
-                    return
+                    } return
                 } else if (user.value == "" || password.value == "") {
                     errore.innerHTML = "Compila tutti i campi";
                 } else {
@@ -53,6 +53,7 @@ function sessionStart() {
 //funzione di logout
     btnLogout.addEventListener('click', function (e) {
         e.preventDefault();
+        //al logout la funzione fa scomparire l'avatar e ricomparire i pulsanti di registrazione e login
         logged.style.display = "none";
         for (i = 0; i < login.length; i++) {
             login[i].style.display = "inline-block";

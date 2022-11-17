@@ -22,13 +22,6 @@ class Users {
     this.cart = _cart
   }
 }
-// class Cart {
-//   constructor(_titolo, _genere, _durata){
-//     this.title = _titolo,
-//     this.posterPath = _genere,
-//     this.price = _durata
-//   }
-// }
 
 var url = 'http://localhost:3000/user';
 
@@ -63,12 +56,6 @@ f.addEventListener('submit', function (e) {
         
         //richiamo funzione controllo meail
         controlEmail(newUser);
-        
-       //let newCart = new Cart();
-        
-        
-        //richiamo funzione aggiungi carrello
-       // aggiungiCart()
         
       } else {
         alert('Password non valida!')
@@ -121,18 +108,6 @@ async function aggiungi(user) {
   });   
 }
 
-//funzione aggiungi carrello
-// async function aggiungiCart(cart) {
-//   let response = await fetch('http://localhost:3000/cart', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(cart),
-//   });
-
-// }
-
 //funzione di controllo dell'email
 function controlEmail(user) {
   fetch(url)
@@ -162,6 +137,3 @@ btn.addEventListener('click', drop)
 function drop() {
   document.getElementById("menu_drop").classList.toggle("mostra");
 }
-
-
-//
