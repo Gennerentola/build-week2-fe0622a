@@ -9,7 +9,7 @@ class Users {
     _citta,
     _cap,
     _avatar,
-    _cart= {}
+    _cart= []
   ) {
     this.nome = _nome;
     this.cognome = _cognome;
