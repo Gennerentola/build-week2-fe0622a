@@ -35,7 +35,7 @@ function sessionStart() {
             //controllo dell'email e password al momento del login
             if (elencoUser[i].email === user.value && elencoUser[i].password === password.value) {
                 sessionStorage.setItem('id', elencoUser[i].id);
-                var utente = {'nome': elencoUser[i].nome, 'avatar': elencoUser[i].avatar};
+                var utente = {'nome': elencoUser[i].nome, 'avatar': elencoUser[i].avatar, 'email': elencoUser[i].email, 'password': elencoUser[i].password};
                 sessionStorage.setItem('utente', JSON.stringify(utente));
                     logged.style.display = "block";
                     //aggiunta dell'avatar scelto al momento della registrazione al login

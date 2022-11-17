@@ -8,6 +8,8 @@ var vote = [];
 
 var startLimit = 3;
 var following = [];
+var searchpage = document.getElementById("search");
+var homepage = document.getElementById("home-page");
 
 ///////////////////////radio buttons//////////////////////////
 var multiRadio = document.getElementById("multi");			//
@@ -256,7 +258,10 @@ async function startSearching(keywords) {
 						trimMovieList(pageItems);
 						pageItems.sort(compare);
 						removeDuplicates(pageItems);                   //necessario solo su multi-ricerca
-						searchField.value = "";				
+						searchField.value = "";
+						homepage.classList.add("d-none");
+						searchpage.classList.remove("d-none");
+						document.body.style.background = "white";
 						table.innerHTML = "";
 						//console.table(pageItems);						
 						for (i=0; i < pageItems.length; i++) {

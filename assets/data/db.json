@@ -21,8 +21,27 @@
       "citta": "Roma",
       "cap": "00168",
       "avatar": "./assets/img/avatar/06.png",
-      "cart": [],
+      "cart": [
+        {
+          "title": "Doctor Strange nel Multiverso della Follia",
+          "poster_path": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2//3HldUzuFfMXtmyle2ZanffFbw3B.jpg",
+          "price": 14.9,
+          "id": 453395
+        }
+      ],
       "id": 2
+    },
+    {
+      "nome": "Paolo",
+      "cognome": "Credente",
+      "email": "paoletto@mail.it",
+      "password": "qqqqqqqq1!",
+      "indirizzo": "via di casa mia",
+      "citta": "10",
+      "cap": "00010",
+      "avatar": "./assets/img/avatar/04.png",
+      "cart": [],
+      "id": 3
     }
   ],
   "item": [
@@ -432,6 +451,314 @@
       "amount3D": 5,
       "amount4K": 2,
       "id": 315635
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 9,
+      "amountBR": 9,
+      "amount3D": 5,
+      "amount4K": 2,
+      "id": 616038
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 1,
+      "amountBR": 8,
+      "amount3D": 2,
+      "amount4K": 2,
+      "id": 616039
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 6,
+      "amountBR": 0,
+      "amount3D": 9,
+      "amount4K": 1,
+      "id": 616040
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 4,
+      "amount3D": 0,
+      "amount4K": 6,
+      "id": 616041
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 5,
+      "amount3D": 3,
+      "amount4K": 2,
+      "id": 616042
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 0,
+      "amountBR": 5,
+      "amount3D": 3,
+      "amount4K": 5,
+      "id": 616043
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 6,
+      "amountBR": 6,
+      "amount3D": 6,
+      "amount4K": 4,
+      "id": 616044
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 6,
+      "amountBR": 7,
+      "amount3D": 8,
+      "amount4K": 2,
+      "id": 616045
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 7,
+      "amount3D": 5,
+      "amount4K": 1,
+      "id": 616046
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 6,
+      "amountBR": 0,
+      "amount3D": 9,
+      "amount4K": 4,
+      "id": 616047
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 3,
+      "amount3D": 4,
+      "amount4K": 9,
+      "id": 616048
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 9,
+      "amount3D": 1,
+      "amount4K": 1,
+      "id": 616049
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 0,
+      "amount3D": 1,
+      "amount4K": 4,
+      "id": 616050
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 8,
+      "amountBR": 5,
+      "amount3D": 7,
+      "amount4K": 0,
+      "id": 616051
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 5,
+      "amountBR": 5,
+      "amount3D": 8,
+      "amount4K": 9,
+      "id": 616052
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 9,
+      "amountBR": 0,
+      "amount3D": 6,
+      "amount4K": 2,
+      "id": 616053
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 3,
+      "amount3D": 7,
+      "amount4K": 1,
+      "id": 616054
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 9,
+      "amount3D": 3,
+      "amount4K": 8,
+      "id": 616055
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 1,
+      "amountBR": 2,
+      "amount3D": 9,
+      "amount4K": 6,
+      "id": 616056
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 1,
+      "amount3D": 1,
+      "amount4K": 1,
+      "id": 616057
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 3,
+      "amount3D": 5,
+      "amount4K": 5,
+      "id": 616058
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 1,
+      "amountBR": 8,
+      "amount3D": 0,
+      "amount4K": 8,
+      "id": 616059
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 6,
+      "amount3D": 6,
+      "amount4K": 8,
+      "id": 616060
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 4,
+      "amountBR": 9,
+      "amount3D": 7,
+      "amount4K": 4,
+      "id": 616061
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 5,
+      "amount3D": 0,
+      "amount4K": 5,
+      "id": 616062
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 5,
+      "amountBR": 2,
+      "amount3D": 3,
+      "amount4K": 2,
+      "id": 616063
+    },
+    {
+      "priceDVD": 5.9,
+      "priceBR": 14.9,
+      "price3D": 0,
+      "price4K": 0,
+      "amountDVD": 7,
+      "amountBR": 1,
+      "amount3D": 0,
+      "amount4K": 4,
+      "id": 616064
+    },
+    {
+      "priceDVD": 14.9,
+      "priceBR": 19.9,
+      "price3D": 24.9,
+      "price4K": 29.9,
+      "amountDVD": 3,
+      "amountBR": 8,
+      "amount3D": 0,
+      "amount4K": 9,
+      "id": 453395
     }
   ]
 }
