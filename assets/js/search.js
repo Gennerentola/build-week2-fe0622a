@@ -292,6 +292,9 @@ function startSearching(keywords) {
 							let rateRadio9 = rateRadio1.cloneNode(true);;
 							let rateRadio10 = rateRadio1.cloneNode(true);;
 							dvdRate.append(divStars, rateRadio1, rateRadio2, rateRadio3, rateRadio4, rateRadio5, rateRadio6, rateRadio7, rateRadio8, rateRadio9, rateRadio10);
+							rateRadio4.setAttribute("checked", "true");
+							
+
 							dvdInfo.append(dvdTitle, dvdRate);
 							showcase.append(elementCover, dvdInfo);						
 						}					

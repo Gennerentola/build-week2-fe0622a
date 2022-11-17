@@ -1,142 +1,103 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <title>Build Week Project #2</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous'>
+    <script src="assets/js/popper.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js'
+        integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3'
+        crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="assets/css/style.css"> 
+    <title>Item Page</title>
 </head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg blue">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold me-5 yellow" href="#"><img src="assets/img/logo2.png" width="100"
-                        height="50" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="respo">
-                        <li class="list-unstyled"><a href="#"></a></li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown yellow" id="film" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Film</a>
-                            <ul class="dropdown-menu blue" id="categorieFilm">
-                                <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Signore</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Dio</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Croce</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Merda</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link dropdown yellow" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Serie&#8209;TV</a>
-                            <ul class="dropdown-menu blue" id="categorieSerie">
-                                <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Madonna</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Signore</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Dio</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Gesù</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Croce</a></li>
-                                <li><a class="dropdown-item yellow" href="#">Merda</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link yellow" href="#" role="button"
-                                aria-expanded="false">Ultimi&nbsp;arrivi</a>
-                        </li>
-                        <li class="nav-item dropdown list-unstyled">
-                            <a class="nav-link yellow" href="#" role="button"
-                                aria-expanded="false">I&nbsp;più&nbsp;popolari</a>
-                        </li>
-                    </ul>
-                    <form class="container-fluid">
-                        <div class="input-group">
-                            <span class="input-group-text bg-white"><a href="#"><i
-                                        class="fas fa-search bg-white"></i></a></span>
-                            <input id="search_bar" type="text" class="form-control shadow-none" placeholder="Cerca..."
-                                aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                    </form>
-                    <li class="list-unstyled"><a href="#"><i class="fas fa-shopping-cart yellow"></i></a></li>
-                    <img src="https://cdn.discordapp.com/attachments/1030428044160143410/1040986159922294814/01.png"
-                        width="30px" height="30px" class="rounded-circle ms-5" id="avatar">
-                    <li class="nav-item dropdown list-unstyled" id="respoSaluto">
-                        <a id="saluto" class="nav-link dropdown me-5 yellow" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Login</a>
-                        <ul class="dropdown-menu blue">
-                            <form class="formLogin">
-                                <input class="dropdown-item text-warning bg-primary " id="user" type="text"
-                                    name="username" placeholder="Username" required>
-                                <input class="dropdown-item text-warning bg-primary" id="password" type="password"
-                                    name="password" placeholder="Password" required>
-                                <p class="text-danger text-center" id="erroreLogin"></p>
-                                <button type="button" class="btn mx-5 yellow" id="btnLogin">Accedi</button>
-                            </form>
-                            <div id="formLogged">
-                                <li><a class="dropdown-item yellow" href="#"><i
-                                            class="fas fa-cog m-1"></i>Impostazioni</a></li>
-                                <li><a class="dropdown-item yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a>
-                                </li>
-                                <li><a class="dropdown-item yellow" href="#"><i
-                                            class="fas fa-envelope m-1"></i>Messaggi</a></li>
-                                <li><a class="dropdown-item yellow" href="#" id="logout"><i
-                                            class="fas fa-running m-1"></i>Logout</a></li>
-                            </div>
-                        </ul>
-                    </li>
-                    <form id="formRespo" class="container-fluid mt-3">
-                        <div class="row" id="salutoRespo">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Username" id="userRespo">
-                            </div>
-                            <div class="col">
-                                <input type="password" class="form-control" placeholder="Password" id="passRespo">
-                            </div>
-                            <div class="col" id="loginRespo">
-                                <a href="#" class="btn yellow" id="accediRespo">Accedi</a>
-                                <a href="#" class="btn formLogin yellow" id="registratiRespo">Registrati</a>
-                            </div>
-                            <p class="text-danger" id="erroreRespo"></p>
-                        </div>
-                    </form>
-                    <div id="paragrafoRespo">
-                        <p class="yellow m-3"><span id="salutoUtente"></span></p>
-                    </div>
-                    <div id="userMenuRespo">
-                        <a class="nav-link yellow ms-2" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a>
-                        <a class="nav-link yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a>
-                        <a class="nav-link yellow" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a>
-                        <a class="nav-link yellow btn" id="logoutRespo"><i class="fas fa-running m-1"></i>Logout</a>
-                    </div>
-                    <a href="#" class="btn formLogin yellow mx-3" id="registrati">Registrati</a>
-
-
+<body id="homeBody">
+    <main id="home-page">
+        <div class="bg-box d-lg-none">
+            <img src="assets/img/invite.png" alt="pubblicità retrò">
+        </div>
+        <div class="bg-box">
+            <img src="assets/img/cinema.png" alt="offerte del momento">
+            <img id="curtains" src="assets/img/cinema2.png" alt="cinema">
+        </div>
+        <div class="bg-box d-xl-none">
+            <img src="assets/img/invite2.png" alt="consegna veloce">
+        </div>
+    
+        <h2 class="text-warning">Offerte da non perdere!</h2>
+    
+        <div class="carousel-wrapper" id="products">
+            <div class="carousel-inner clearfix">
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=101299">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bTuBbGx8RYdhtf73hlCWo8wStMZ.jpg">
+                    </a>
                 </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=299536">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/A404e70ZnvWFoWA517sySQXe8X6.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=tv&id=1399">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w220_and_h330_face/qwGKZ0vy6o69aErE6cJ43L8DE2N.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=287947">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w220_and_h330_face/vJSd6IfAlA3ZYL36gnxfkslCnDn.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=tv&id=1405">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w220_and_h330_face/58H6Ctze1nnpS0s9vPmAAzPcipR.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=8871">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cBfITyt762dfbuDc76bFImV6MVV.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=331482">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7WxwYuJLFXFBU53i02XQ56p3Lj3.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=675">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iXg8dcylRbYNREcdU1Y2EGxpxxe.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=movie&id=4564">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u5ahabgPxtLhxSv46458vPn0uSv.jpg">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="item.html?media_type=tv&id=2673">
+                        <img class="poster"
+                            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xDc6BMGDaeyalpSZ9KKk7RCBCz5.jpg">
+                    </a>
+                </div>
+                <div class="item"></div> <!-- Questa linea non va toccata -->
             </div>
-        </nav>
+            <a href="#" class="carousel-left"></a>
+            <a href="#" class="carousel-right"></a>
+        </div>       
+    </main>
 
-    </header>
-    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/index.js"></script>
     <script src="https://kit.fontawesome.com/0ff7ae3867.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
