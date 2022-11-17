@@ -124,7 +124,7 @@ function controlEmail(user) {
         aggiungi(user);
         location.href= 'index.html';
       } else {
-        document.getElementById('errore').innerHTML='Controlla i dati inseriti'
+        document.getElementById('errore').innerHTML="La email inserita è gia stata utilizzata";
       }
     });
 }
