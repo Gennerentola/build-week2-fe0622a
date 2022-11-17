@@ -55,7 +55,9 @@ if(utente) {
   //aggiunta dell'avatar scelto al momento della registrazione al login
    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
   saluto.classList.remove("interactiveBtn");
-}
+} for (i = 0; i < login.length; i++) {
+	login[i].style.display = "none";
+} return
 
 multiRadio.addEventListener("change", function(e) {
 	e.preventDefault();
