@@ -410,6 +410,28 @@
       "amount3D": 2,
       "amount4K": 5,
       "id": 466272
+    },
+    {
+      "priceDVD": 6.9,
+      "priceBR": 14.9,
+      "price3D": 16.9,
+      "price4K": 0,
+      "amountDVD": 2,
+      "amountBR": 9,
+      "amount3D": 9,
+      "amount4K": 9,
+      "id": 1724
+    },
+    {
+      "priceDVD": 7.9,
+      "priceBR": 14.9,
+      "price3D": 18.9,
+      "price4K": 25.9,
+      "amountDVD": 8,
+      "amountBR": 9,
+      "amount3D": 5,
+      "amount4K": 2,
+      "id": 315635
     }
   ]
 }
