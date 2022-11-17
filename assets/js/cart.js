@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
     visualizzaCarrello();
     svuotaBtn.style.display = "none";
+    barraPagamento.classList.remove("d-lg-block");
     barraPagamento.classList.add("d-none");
 }
 
@@ -144,15 +145,15 @@ var widthLg = window.matchMedia("(min-width: 992px)");
 
 if (widthLg.matches) {
     barraPagamento.classList.remove("fixed-bottom");
-    barraPagamento.classList.add("rounded");
-    paySection.classList.add("position-fixed", "end-0", "border", "rounded");
+    barraPagamento.classList.add("rounded", "border");
+    paySection.classList.add("position-fixed", "end-0");
 }
 
 window.addEventListener("resize", () => {
     if (widthLg.matches) {
         barraPagamento.classList.remove("fixed-bottom");
-        barraPagamento.classList.add("rounded");
-        paySection.classList.add("position-fixed", "end-0", "border", "rounded");
+        barraPagamento.classList.add("rounded", "border");
+        paySection.classList.add("position-fixed", "end-0");
     }
 })
 
@@ -161,8 +162,8 @@ var fixWidth = window.matchMedia("(max-width: 991px)");
 window.addEventListener("resize", () => {
     if (fixWidth.matches) {
         barraPagamento.classList.add("fixed-bottom");
-        barraPagamento.classList.remove("rounded");
-        paySection.classList.remove("position-fixed", "end-0", "border", "rounded");
+        barraPagamento.classList.remove("rounded", "border");
+        paySection.classList.remove("position-fixed", "end-0");
     }
 })
 
