@@ -33,13 +33,15 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 var utente = JSON.parse(sessionStorage.getItem('utente'))
 
-if(utente) {
-   logged.style.display = "block";
-  //aggiunta dell'avatar scelto al momento della registrazione al login
-   saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
-  saluto.classList.remove("interactiveBtn");
-  document.getElementById('registrati').style.display = "none";
-} 
+if (utente) {
+    logged.style.display = "block";
+    //aggiunta dell'avatar scelto al momento della registrazione al login
+    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
+    saluto.classList.remove("interactiveBtn");
+    login.forEach(element => {
+        element.style.display = "none";
+    })
+}
 
 function check(id) {
     console.log(id);        /* va messa la funzione per comprare e cambiare i tag .price */   

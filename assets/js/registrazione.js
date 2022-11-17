@@ -99,13 +99,14 @@ if (x.type === "password") {
 
 //funzione di aggiunta dell'utente al JSON db
 async function aggiungi(user) {
-  let response = await fetch(url, {
+  let response = await fetch('http://localhost:3000/user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
   });   
+  location.href= 'index.html';
 }
 
 //funzione di controllo dell'email
@@ -122,9 +123,8 @@ function controlEmail(user) {
       //controllo se la nuova email inserita è gia stata registrata
       if (email.includes(mail) == false) {
         aggiungi(user);
-        location.href= 'index.html';
       } else {
-        document.getElementById('errore').innerHTML="La email inserita è gia stata utilizzata";
+        document.getElementById('errore').innerHTML='Controlla i dati inseriti'
       }
     });
 }
