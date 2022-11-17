@@ -103,7 +103,7 @@ function getContent() {
                 document.getElementById("trailer").title = content.videos.results[0].name;
             }
             else {
-                document.getElementById("trailer").parentElement.innerHTML = `<img src="${catalog2}${content.backdrop_path}" width="100%"/>`;
+                document.getElementById("trailer").parentElement.innerHTML = `<img class="px-2" src="${catalog2}${content.backdrop_path}" width="100%" style="border-radius:40px"/>`;
             }
     });    
 }
