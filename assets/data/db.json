@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "nome": "mio",
+      "cognome": "moglio",
+      "email": "ciarcia92@hotmail.it",
+      "password": "lorenzo96#",
+      "indirizzo": "via del ciccio",
+      "citta": "roma",
+      "cap": "123",
+      "avatar": "./assets/img/avatar/03.png",
+      "id": 1
+    }
+  ],
+  "cart": [
+    {
+      "id": 1
+    }
+  ]
+}
