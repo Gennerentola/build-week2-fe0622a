@@ -16,6 +16,9 @@ document.getElementById('registrati').addEventListener('click', function(){
 
 
 
+
+
+
 //bottone di login
 addBtn.addEventListener('click', sessionStart);
 
@@ -23,14 +26,17 @@ addBtn.addEventListener('click', sessionStart);
 //funzione di login
 function sessionStart() {
     fetch('http://localhost:3000/user')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            elencoUser = data;
-            for (i = 0; i < elencoUser.length; i++) {
-                //controllo dell'email e password al momento del login
-                if (elencoUser[i].email === user.value && elencoUser[i].password === password.value) {
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        elencoUser = data;
+        for (i = 0; i < elencoUser.length; i++) {
+            //controllo dell'email e password al momento del login
+            if (elencoUser[i].email === user.value && elencoUser[i].password === password.value) {
+                sessionStorage.setItem('id', elencoUser[i].id);
+                var utente = {'nome': elencoUser[i].nome, 'avatar': elencoUser[i].avatar};
+                sessionStorage.setItem('utente', JSON.stringify(utente));
                     logged.style.display = "block";
                     //aggiunta dell'avatar scelto al momento della registrazione al login
                     saluto.innerHTML = `<img src="${elencoUser[i].avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${elencoUser[i].nome}`;
@@ -55,6 +61,7 @@ function sessionStart() {
         e.preventDefault();
         //al logout la funzione fa scomparire l'avatar e ricomparire i pulsanti di registrazione e login
         logged.style.display = "none";
+        sessionStorage.clear()
         for (i = 0; i < login.length; i++) {
             login[i].style.display = "inline-block";
             saluto.innerHTML = "Login";

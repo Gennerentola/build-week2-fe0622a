@@ -30,6 +30,16 @@ tomorrow.setHours(0, 0, 0, 0);
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
+
+var utente = JSON.parse(sessionStorage.getItem('utente'))
+
+if(utente) {
+   logged.style.display = "block";
+  //aggiunta dell'avatar scelto al momento della registrazione al login
+   saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
+  saluto.classList.remove("interactiveBtn");
+}
+
 function check(id) {
     console.log(id);        /* va messa la funzione per comprare e cambiare i tag .price */   
 }
