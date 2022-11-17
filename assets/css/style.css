@@ -684,8 +684,21 @@ display: initial;
   height: 105px;
 }
 
+#footerStyle {
+  background-color: #0c41aa;
+}
 
+#barraPagamento a {
+  background-color: #0c41aa;
+  color: #ffc107;
+}
+/********************** MEDIA QUERY **********************/
 
+@media screen and (min-width: 992px) {
+  #correlatiCarrello {
+    height: auto;
+  }
+}
 
 
 
