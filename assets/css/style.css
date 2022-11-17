@@ -684,8 +684,8 @@ display: initial;
   z-index: 1031;
 }
 
-#correlatiCarrello {
-  height: 105px;
+#spessoreCarrello {
+  height: 40px;
 }
 
 #footerStyle {
@@ -701,6 +701,9 @@ display: initial;
 @media screen and (min-width: 992px) {
   #correlatiCarrello {
     height: auto;
+  }
+  #spessoreCarrello {
+    display: none;
   }
 }
 

@@ -91,11 +91,20 @@ function sommaPrezzi() {
     costoTotale.innerHTML = `${somma}€`;
 }
 
-function rimuovi(id) {
-    if (confirm("Sei sicuro di voler cancellare?") == true) {
-        fetch(`http://localhost:3000/user/${id}`, {
-            method: 'DELETE'
-        });
+async function rimuovi(id) {
+    if (confirm("Sei sicuro di voler rimuovere l'oggetto?") == true) {
+        arrayCart.cart.splice(id-1, 1)
+        let options = {
+            method: "PATCH",
+           headers: {
+               "Content-Type": "application/json"
+           },
+           body: JSON.stringify({
+            "cart" : arrayCart.cart
+           })
+         }
+        
+          let response = await fetch(`http://localhost:3000/user/${idUtente}`, options)
     }
 }
 
@@ -136,14 +145,14 @@ var widthLg = window.matchMedia("(min-width: 992px)");
 if (widthLg.matches) {
     barraPagamento.classList.remove("fixed-bottom");
     barraPagamento.classList.add("rounded");
-    paySection.classList.add("position-fixed", "end-0");
+    paySection.classList.add("position-fixed", "end-0", "border", "rounded");
 }
 
 window.addEventListener("resize", () => {
     if (widthLg.matches) {
         barraPagamento.classList.remove("fixed-bottom");
         barraPagamento.classList.add("rounded");
-        paySection.classList.add("position-fixed", "end-0");
+        paySection.classList.add("position-fixed", "end-0", "border", "rounded");
     }
 })
 
@@ -153,7 +162,7 @@ window.addEventListener("resize", () => {
     if (fixWidth.matches) {
         barraPagamento.classList.add("fixed-bottom");
         barraPagamento.classList.remove("rounded");
-        paySection.classList.remove("position-fixed", "end-0");
+        paySection.classList.remove("position-fixed", "end-0", "border", "rounded");
     }
 })
 
