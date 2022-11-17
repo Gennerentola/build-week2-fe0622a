@@ -13,6 +13,7 @@ var priceBluRay = document.getElementById("priceBlu-ray");
 var priceDvD = document.getElementById("priceDVD");
 var price3D = document.getElementById("price3D");
 var price4K = document.getElementById("price4K");
+var addToCart = document.getElementById("addToCart");
 var pBR;
 var pDVD;
 var p3D;
@@ -43,10 +44,6 @@ if (utente) {
     })
 }
 
-function check(id) {
-    console.log(id);        /* va messa la funzione per comprare e cambiare i tag .price */   
-}
-
 class Item {
     constructor(_priceDVD, _priceBR, _price3D, _price4K, _amountDVD, _amountBR, _amount3D, _amount4K, _id) {      
       this.priceDVD = _priceDVD;
@@ -61,7 +58,64 @@ class Item {
     }
 }
 
+class Cart {
+    constructor(_title, _poster_path, _price, _id) {
+        this.title = _title;
+        this.poster_path = _poster_path;
+        this.price = _price;
+        this.id = _id
+    }
+}
+
 window.addEventListener("DOMContentLoaded", getContent);
+
+addToCart.addEventListener("click", (e) => {
+    let price = parseFloat(document.querySelector(".price").textContent);
+    let userId = sessionStorage.getItem('id');
+    let user = JSON.parse(sessionStorage.getItem('utente'));
+    fetch('http://localhost:3000/user/' + userId).then((response) => {
+                return response.json();			
+            }).then((data) => {
+            let result = data;
+            if (result.email == user.email && result.password == user.password) {
+                    fetch('http://localhost:3000/user/' + userId).then((response) => {
+                            return response.json();			
+                        }).then((data) => {
+                            let userData = data;
+                            addItemToCart(userData, price);
+                        });
+            }
+            else {
+                sessionStorage.clear();
+                window.location = "http://127.0.0.1:5500/registration.html";
+            }
+
+            }).catch((error) => {
+                window.location = "http://127.0.0.1:5500/registration.html";
+            });
+    
+
+})
+
+async function addItemToCart(userData, price) {
+    let user = userData;
+    let title = document.getElementById("title").innerText;
+    let poster = catalog + content.poster_path;
+    let cart = new Cart(title, poster, price, id);
+    user.cart.push(cart);
+    let response = await fetch('http://localhost:3000/user/' + user.id, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		},
+		body: JSON.stringify(user)
+	});
+
+}
+
+
+
+
 
 function review() {
     fetch('https://api.themoviedb.org/3/' + type + '/' + id + '/reviews?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&page=1').then((response) => {
@@ -251,8 +305,6 @@ function getContent() {
             }
             else {
                 document.getElementById("trailer").parentElement.innerHTML = `<img class="px-2" src="${catalog2}${content.backdrop_path}" width="100%" style="border-radius:40px"/>`;
-            }          
-            
-
-    });    
+            }
+        });    
 }

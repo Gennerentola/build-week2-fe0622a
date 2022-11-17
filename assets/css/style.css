@@ -869,6 +869,13 @@ display: initial;
   border: 2px solid black;
 }
 
+#footer {
+  position:fixed;
+  bottom:0px;
+  height:40px;
+  width:100%
+}
+
 @media screen and (min-width:450px) {
   .carousel-wrapper {
     margin-top: -520px;
