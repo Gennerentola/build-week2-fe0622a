@@ -8,8 +8,17 @@ var costoTotale = document.getElementById("costoTotale");
 var cartReview = document.getElementById("riepilogo");
 var numArticoli = document.getElementById("numArticoli");
 var idUtente = sessionStorage.getItem('id');
+var utente = JSON.parse(sessionStorage.getItem('utente'))
 
 window.addEventListener('DOMContentLoaded', init);
+
+if(utente) {
+   logged.style.display = "block";
+  //aggiunta dell'avatar scelto al momento della registrazione al login
+   saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
+  saluto.classList.remove("interactiveBtn");
+}
+
 
 function init() {
     visualizzaCarrello();
