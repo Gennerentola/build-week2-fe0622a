@@ -1,7 +1,7 @@
 {
   "store": [
     {
-      "money": 46.4,
+      "money": 85.9,
       "id": 1
     }
   ],
@@ -41,6 +41,18 @@
       "avatar": "./assets/img/avatar/04.png",
       "cart": [],
       "id": 3
+    },
+    {
+      "nome": "Mario",
+      "cognome": "Rossi",
+      "email": "mariorossi@gmail.com",
+      "password": "epicode12@",
+      "indirizzo": "Via dei mauri 10",
+      "citta": "Maratea",
+      "cap": "85228",
+      "avatar": "./assets/img/avatar/14.png",
+      "cart": [],
+      "id": 4
     }
   ],
   "item": [
@@ -302,7 +314,7 @@
       "priceBR": 12.9,
       "price3D": 16.9,
       "price4K": 21.9,
-      "amountDVD": 9,
+      "amountDVD": 8,
       "amountBR": 4,
       "amount3D": 6,
       "amount4K": 7,
@@ -448,7 +460,7 @@
       "amountDVD": 8,
       "amountBR": 9,
       "amount3D": 5,
-      "amount4K": 2,
+      "amount4K": 1,
       "id": 315635
     },
     {
@@ -857,6 +869,39 @@
       "amount3D": 5,
       "amount4K": 8,
       "id": 297556
+    },
+    {
+      "priceDVD": 9.9,
+      "priceBR": 16.9,
+      "price3D": 19.9,
+      "price4K": 25.9,
+      "amountDVD": 8,
+      "amountBR": 7,
+      "amount3D": 7,
+      "amount4K": 5,
+      "id": 299534
+    },
+    {
+      "priceDVD": 7.9,
+      "priceBR": 14.9,
+      "price3D": 18.9,
+      "price4K": 25.9,
+      "amountDVD": 0,
+      "amountBR": 7,
+      "amount3D": 7,
+      "amount4K": 0,
+      "id": 383498
+    },
+    {
+      "priceDVD": 7.9,
+      "priceBR": 14.9,
+      "price3D": 18.9,
+      "price4K": 25.9,
+      "amountDVD": 2,
+      "amountBR": 2,
+      "amount3D": 1,
+      "amount4K": 1,
+      "id": 335983
     }
   ]
 }
