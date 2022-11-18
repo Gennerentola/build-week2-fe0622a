@@ -13,6 +13,14 @@ var utente = JSON.parse(sessionStorage.getItem('utente'))
 
 window.addEventListener("DOMContentLoaded", init);
 
+class Store {
+    constructor (_income = 0) {
+        this.money = _income
+    }
+}
+
+var store = new Store;
+
 if (utente) {
     logged.style.display = "block";
     //aggiunta dell'avatar scelto al momento della registrazione al login
@@ -109,8 +117,13 @@ function sommaPrezzi() {
 }
 
 async function rimuovi(id) {
+    console.log(id);
     if (confirm("Sei sicuro di voler rimuovere l'oggetto?") == true) {
-        arrayCart.cart.splice(id-1, 1)
+        for (i = 0; i < arrayCart.cart.length; i++) {
+            if (arrayCart.cart[i].id == id) {
+                arrayCart.cart.splice(i,1);
+            }
+        }        
         let options = {
             method: "PATCH",
            headers: {
@@ -148,8 +161,84 @@ async function svuotaCarrello() {
 var buyBtn = document.getElementById("acquistoEffettuato");
 
 buyBtn.addEventListener("click", function () {
-    svuotaCarrello();
+    aggiornaStore(arrayCart);    
 })
+
+async function aggiornaStore(user) {
+    let cart = user.cart;
+    let ids = [];
+    let price = [];
+    let sum = 0;
+    for (i = 0; i < cart.length; i++) {
+        ids[i] = cart[i].id;
+        price[i] = cart[i].price;
+        sum += price[i];
+    }    
+    fetch('http://localhost:3000/store/1').then((response) => {
+        return response.json();			
+        }).then(async (data) => {
+            store = data;            
+            store.money += sum;
+            let response = await fetch('http://localhost:3000/store/' + 1 , {
+		    method: 'PUT',
+		    headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		            },
+		    body: JSON.stringify(store)
+            });                   
+	});
+
+    //rimuove gli oggetti dal campionario
+    for (i = 0; i < ids.length; i++) {
+        fetch('http://localhost:3000/item/' + ids[i]).then((response) => {
+            return response.json();			
+        }).then(async (data) => {
+            let item = data;
+            if (price[0] == item.priceDVD) {
+                item.amountDVD--;
+            }
+            else if (price[0] == item.priceBR) {
+                item.amountBR--;
+            }
+            else if (price[0] == item.price3D) {
+                item.amount3D--;
+            }
+            else {
+                item.amount4K--;
+            }
+            price[0] = "";
+            price.shift;
+
+            let response = await fetch('http://localhost:3000/item/' + item.id , {
+		    method: 'PUT',
+		    headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		            },
+		    body: JSON.stringify(item)
+            });  
+            
+        });
+    }
+    svuotaCarrello(user)
+}
+
+async function svuotaCarrello(user) {
+    let options = {
+      method: "PATCH",
+     headers: {
+         "Content-Type": "application/json"
+     },
+     body: JSON.stringify({
+      "cart" : []
+     })
+   }
+  
+    let response = await fetch(`http://localhost:3000/user/`+ user.id, options)
+  }
+
+
+    
+
 
 
 ///////////////////////////////////////////// MEDIA QUERIES JS ///////////////////////////////////////////////
