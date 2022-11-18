@@ -308,7 +308,7 @@ color:#c79650;
 /*                                             MEDIA QUERY                                      */
 
 
-@media screen and (max-width:992px) {
+@media screen and (max-width:991px) {
   #respo {
     display: flex;
     flex-direction: row;
