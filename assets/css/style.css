@@ -744,6 +744,10 @@ display: initial;
 
 
 /*******************************************home****************************************************************/
+body {
+  padding-block: 28px 40px;
+}
+
 #homeBody {
   background-image: url(../img/pattern.jpg);
 }
