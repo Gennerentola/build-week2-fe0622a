@@ -18,163 +18,73 @@
   <header>
     <nav class="navbar navbar-expand-lg blue fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand fw-bold me-5 yellow" href="index.html"
-          ><img src="assets/img/logo2.png" width="100" height="50" alt=""
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
+        <a class="navbar-brand fw-bold me-5 yellow" href="index.html"><img src="assets/img/logo2.png" width="100" height="50" alt="Blockbuster"/></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mb-2 mb-lg-0" id="respo">
             <li class="list-unstyled"><a href="#"></a></li>
             <li class="nav-item dropdown list-unstyled">
-              <a
-                class="nav-link dropdown yellow"
-                id="film"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Film</a
-              >
+              <a class="nav-link dropdown yellow" id="film" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Film</a>
               <ul class="dropdown-menu blue" id="categorieFilm">
                 <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                <li>
-                  <a class="dropdown-item yellow" href="#">Romantico</a>
-                </li>
+                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
                 <li><a class="dropdown-item yellow" href="#">Horror</a></li>
                 <li><a class="dropdown-item yellow" href="#">Commedia</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown list-unstyled">
-              <a
-                class="nav-link dropdown yellow"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Serie&#8209;TV</a
-              >
+              <a class="nav-link dropdown yellow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Serie&#8209;TV</a>
               <ul class="dropdown-menu blue" id="categorieSerie">
                 <li><a class="dropdown-item yellow" href="#">Azione</a></li>
-                <li>
-                  <a class="dropdown-item yellow" href="#">Romantico</a>
-                </li>
+                <li><a class="dropdown-item yellow" href="#">Romantico</a></li>
                 <li><a class="dropdown-item yellow" href="#">Dramma</a></li>
                 <li><a class="dropdown-item yellow" href="#">Sitcom</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown list-unstyled">
-              <a
-                class="nav-link yellow"
-                href="#"
-                role="button"
-                aria-expanded="false"
-                >Ultimi&nbsp;arrivi</a
-              >
+              <a class="nav-link yellow" href="#" role="button" aria-expanded="false">Ultimi&nbsp;arrivi</a>
             </li>
             <li class="nav-item dropdown list-unstyled">
-              <a
-                class="nav-link yellow"
-                href="#"
-                role="button"
-                aria-expanded="false"
-                >I&nbsp;più&nbsp;popolari</a
-              >
+              <a class="nav-link yellow" href="#" role="button" aria-expanded="false">I&nbsp;più&nbsp;popolari</a>
             </li>
           </ul>
-          <form class="container-fluid">
+          <div class="container-fluid">
             <div class="input-group">
-              <span class="input-group-text bg-white"
-                ><a href="#"><i class="fas fa-search bg-white"></i></a
-              ></span>
-              <input
-                id="search_bar"
-                type="text"
-                class="form-control shadow-none"
-                placeholder="Cerca..."
-                aria-label="Username"
-                aria-describedby="basic-addon1" />
+              <span class="input-group-text bg-white"><a href="#"><i class="fas fa-search bg-white"></i></a></span>
+              <input id="search_bar" type="text" class="form-control shadow-none" placeholder="Cerca..." aria-label="Username" aria-describedby="basic-addon1"/>
             </div>
-          </form>
-          <li class="list-unstyled">
-            <a href="cart.html"><i class="fas fa-shopping-cart yellow"></i></a>
-          </li>
+          </div>
+          <li class="list-unstyled"><a href="cart.html"><i class="fas fa-shopping-cart yellow"></i></a></li>
           <li class="nav-item dropdown list-unstyled" id="respoSaluto">
-            <a
-              id="saluto"
-              class="btn nav-link dropdown me-3 ms-2 yellow d-flex interactiveBtn"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Login</a
-            >
+            <a id="saluto" class="btn nav-link dropdown me-3 ms-2 yellow d-flex interactiveBtn" href="#"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
             <ul class="dropdown-menu blue">
               <form id="form_login" class="formLogin">
-                <input
-                  class="bg-white dropdown-item form-control shadow-none"
-                  id="user"
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  required />
-                <input
-                  class="bg-white dropdown-item form-control shadow-none"
-                  id="password"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  required />
+                <input class="bg-white dropdown-item form-control shadow-none" id="user" type="text" name="username" placeholder="Username" required/>
+                <input class="bg-white dropdown-item form-control shadow-none" id="password" type="password" name="password" placeholder="Password" required/>
                 <p class="text-danger text-center" id="erroreLogin"></p>
-                <button type="button" class="btn mx-5 yellow" id="btnLogin">
-                  Accedi
-                </button>
+                <button type="button" class="btn mx-5 yellow" id="btnLogin">Accedi</button>
               </form>
               <div id="formLogged">
-                <li>
-                  <a class="dropdown-item yellow" href="#"
-                    ><i class="fas fa-cog m-1"></i>Impostazioni</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item yellow" href="#"
-                    ><i class="fas fa-user m-1"></i>Profilo</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item yellow" href="#"
-                    ><i class="fas fa-envelope m-1"></i>Messaggi</a
-                  >
-                </li>
+                <li><a class="dropdown-item yellow" href="#"><i class="fas fa-cog m-1"></i>Impostazioni</a></li>
+                <li><a class="dropdown-item yellow" href="#"><i class="fas fa-user m-1"></i>Profilo</a></li>
+                <li><a class="dropdown-item yellow" href="#"><i class="fas fa-envelope m-1"></i>Messaggi</a></li>
                 <li><hr class="dropdown-divider" id="divider"></li>
-                <li>
-                  <a class="dropdown-item yellow" href="#" id="logout"><i class="fas fa-running m-1"></i>Logout</a>
-                </li>
+                <li><a class="dropdown-item yellow" href="#" id="logout"><i class="fas fa-running m-1"></i>Logout</a></li>
               </div>
             </ul>
           </li>
-
             <a href="#" class="btn formLogin yellow interactiveBtn" id="registrati">Registrati</a>
         </div>
       </div>
     </nav>
   </header>
 
+    
 
-
-
-
-
-
-    <div id="search" class="d-none my-5">    
+    <section id="search" class="d-none my-5">    
         <hr class="m-0">
         <div class="d-flex justify-content-between align-items-center">
             <div id="mobileSearchMenu">
@@ -182,12 +92,8 @@
                 <p class="text-decoration-underline my-0">Scopri questi risultati</p>
             </div>
             <div>
-                <button class="bg-white text-primary border border-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Filtri <i
-                        class="fa-solid fa-angle-down text-primary"></i></button>
-    
-                <div class="offcanvas offcanvas-bottom rounded-top" tabindex="-1" id="offcanvasBottom"
-                    aria-labelledby="offcanvasBottomLabel">
+                <button class="bg-white text-primary border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Filtri<i class="fa-solid fa-angle-down text-primary"></i></button>    
+                <div class="offcanvas offcanvas-bottom rounded-top" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                     <div class="offcanvas-header pb-2">
                         <div class="w-75 bg-secondary bg-opacity-10 rounded-pill">
                             <i class="fa-solid fa-magnifying-glass ps-2"></i>
@@ -200,14 +106,10 @@
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                    <button class="accordion-button shadow-none py-2" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
-                                        aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Categorie
+                                    <button class="accordion-button shadow-none py-2" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"   aria-controls="panelsStayOpen-collapseOne"> Categorie
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="panelsStayOpen-headingOne">
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                     <div class="accordion-body pt-0 pb-2">
                                         <small>Film e TV</small>
                                         <div>
@@ -223,7 +125,7 @@
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                    <button class="accordion-button collapsed shadow-none py-2" type="button" data-bs-toggle="collapse"                             data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" id="searchParameter">
+                                    <button class="accordion-button collapsed shadow-none py-2" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" id="searchParameter">
                                         <!-- Aggiungere JS -->
                                     </button>
                                 </h2>
@@ -255,36 +157,23 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--    <select id="filter" class="form-select shadow-none">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>                              -->
+                </div>                
             </div>
         </div>
-        <hr class="my-0">
-    
+        <hr class="my-0">    
         <div class="d-flex flex-column align-items-center">
             <div class="row text-center w-100 d-flex justify-content-evenly" id="tableRow">
     
                 <!-- Qui vanno i risultati della ricerca -->
     
-            </div>
-    
+            </div>    
         </div>
-    </div>
-
-
+      </section>
 
     <!---------------------------------------------------------------------------------------------------------------->
 
-
-
     <main id="home-page" class="my-5">
-        <div class="bg-box d-lg-none">
+        <div class="bg-box d-md-none">
             <img src="assets/img/invite.png" alt="pubblicità retrò">
         </div>
         <div class="bg-box">
@@ -369,8 +258,7 @@
     <footer id="footer">
         <div id="footerStyle" class="text-center">    
             <div class="card-body">
-                <p class="p-2 card-text text-white">&copy; <a class="text-white" href="https://epicode.com/it/">Epicode</a>
-                    2022</p>
+                <p class="p-2 card-text text-white">&copy; <a class="text-white" href="https://epicode.com/it/">Epicode</a> 2022</p>
             </div>
         </div>
     </footer>

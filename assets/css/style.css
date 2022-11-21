@@ -929,15 +929,19 @@ body {
   }  
 
   #home-page, #curtains {
-    max-width:1300px;
+    max-width:1250px;
   }
 
   .carousel-wrapper {
-    margin-top: -960px;
+    margin-top: -740px;
   }
 
   #home-page h2 {
-    margin-top: -1040px;
+    margin-top: -820px;
     font-size: 36px;
+  }  
+
+  .bg-box:nth-of-type(2), .bg-box:nth-of-type(3) {
+    margin-top: -300px;
   }
 }
