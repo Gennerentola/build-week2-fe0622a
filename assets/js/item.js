@@ -3,12 +3,16 @@ var id = parseInt(address.slice(address.lastIndexOf("id")+3));
 var type = address.slice(address.lastIndexOf("type")+5, address.lastIndexOf("id")-1);
 var contentBox = document.getElementById("contentRow");
 const mesi = new Array("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
-const catalog = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/";
+const catalog1 = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/";
 const catalog2 = "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/";
+var searchpage = document.getElementById("search");
+var itempage = document.getElementById("itempage");
+var searchField = document.getElementById("search_bar");   				
+
 var content;
 var analysis;
 var recommendation;
-var date;
+var releaseDate;
 var priceBluRay = document.getElementById("priceBlu-ray");
 var priceDvD = document.getElementById("priceDVD");
 var price3D = document.getElementById("price3D");
@@ -87,20 +91,17 @@ addToCart.addEventListener("click", (e) => {
             }
             else {
                 sessionStorage.clear();
-                window.location = "http://127.0.0.1:5500/registration.html";
+                window.location = "registration.html";
             }
-
             }).catch((error) => {
-                window.location = "http://127.0.0.1:5500/registration.html";
+                window.location = "registration.html";
             });
-    
-
 })
-
+///////////////// Aggiunge un oggetto al carrello ////////////////
 async function addItemToCart(userData, price) {
     let user = userData;
     let title = document.getElementById("title").innerText;
-    let poster = catalog + content.poster_path;
+    let poster = catalog1 + content.poster_path;
     let cart = new Cart(title, poster, price, id);
     user.cart.push(cart);
     let response = await fetch('http://localhost:3000/user/' + user.id, {
@@ -110,13 +111,8 @@ async function addItemToCart(userData, price) {
 		},
 		body: JSON.stringify(user)
 	});
-
 }
-
-
-
-
-
+////////////////////////////////////////// Chiamata API per ottenere la recensione, qualora presente //////////////////////////////////////////////////
 function review() {
     fetch('https://api.themoviedb.org/3/' + type + '/' + id + '/reviews?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&page=1').then((response) => {
 			return response.json();			
@@ -127,15 +123,15 @@ function review() {
         document.getElementById("review").innerHTML = "Non sono presenti recensioni al momento.";
     })
 }
-
+////////////////////////////////////// Chiamata API per ottenere i titoli correlati presenti nel carousel 3D ///////////////////////////////////////////
 function recommend() {
     fetch('https://api.themoviedb.org/3/' + type + '/' + id + '/recommendations?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&page=1').then((response) => {
 			return response.json();			
 		}).then((data) => {
 			recommendation = data.results;
             for (i = 0; i < 9; i++)  {
-                document.getElementById("carousel0" + (i+1)).src = catalog + recommendation[i].poster_path;
-                document.getElementById("carousel0" + (i+1)).alt = catalog + ((recommendation[i].title != null) ? recommendation[i].title : recommendation[i].name);
+                document.getElementById("carousel0" + (i+1)).src = catalog1 + recommendation[i].poster_path;
+                document.getElementById("carousel0" + (i+1)).alt = catalog1 + ((recommendation[i].title != null) ? recommendation[i].title : recommendation[i].name);
                 document.getElementById("carousel0" + (i+1)).addEventListener("click", function(e)  {
                     e.preventDefault();
                     let i = parseInt(this.id.charAt(9))-1;
@@ -144,35 +140,35 @@ function recommend() {
             }  
     });
 }
-
+///////////////////// Se un articolo non è ancora a catalogo, la funzione genera dei prezzi predefiniti in base all'anno di uscita e aggiunge l'articolo, e relativi prezzi e quantita a listino nel JSON ////////////////////////
 function checkStore() {
     fetch('http://localhost:3000/item/' + id).then((response) => {
             if(!response.ok) {                
-                if ((today.getFullYear() - date.getFullYear()) < 2) {
+                if ((today.getFullYear() - releaseDate.getFullYear()) < 2) {
                     pBR = 19.90;
                     pDVD = 14.90;
                     p3D = 24.90;
                     p4K = 29.90;
                 }
-                else if ((today.getFullYear() - date.getFullYear()) < 4) {
+                else if ((today.getFullYear() - releaseDate.getFullYear()) < 4) {
                     pBR = 16.90;
                     pDVD = 9.90;
                     p3D = 19.90;
                     p4K = 25.90;
                 }
-                else if ((today.getFullYear() - date.getFullYear()) < 8) {
+                else if ((today.getFullYear() - releaseDate.getFullYear()) < 8) {
                     pBR = 14.90;
                     pDVD = 7.90;
                     p3D = 18.90;
                     p4K = 25.90;
                 }
-                else if ((today.getFullYear() - date.getFullYear()) < 12) {
+                else if ((today.getFullYear() - releaseDate.getFullYear()) < 12) {
                     pBR = 14.90;
                     pDVD = 7.90;
                     p3D = 18.90;
                     p4K = 0;
                 }
-                else if ((today.getFullYear() - date.getFullYear()) < 20) {
+                else if ((today.getFullYear() - releaseDate.getFullYear()) < 20) {
                     pBR = 14.90;
                     pDVD = 6.90;
                     p3D = 16.90;
@@ -209,22 +205,22 @@ function checkStore() {
                 amountBR = item.amountBR;
                 amount3D = item.amount3D;
                 amount4K = item.amount4K;
-                if (amountDVD == 0) {
-                    priceDvD.parentElement.classList.add("d-none");
-                    priceDvD.parentElement.classList.remove("d-flex");
-                }
-                if (amountBR == 0) {
-                    priceBluRay.parentElement.classList.add("d-none");
-                    priceBluRay.parentElement.classList.remove("d-flex");
-                }
-                if (price3D.innerText == "0.00€" || amount3D == 0) {
-                    price3D.parentElement.classList.add("d-none");
-                    price3D.parentElement.classList.remove("d-flex");
-                }
-                if (price4K.innerText == "0.00€" || amount4K == 0) {
-                    price4K.parentElement.classList.add("d-none");
-                    price4K.parentElement.classList.remove("d-flex");
-                }
+                if (amountDVD == 0) {   //////////////////////////////////////
+                    priceDvD.parentElement.classList.add("d-none");         //
+                    priceDvD.parentElement.classList.remove("d-flex");      //
+                }                                                           //
+                if (amountBR == 0) {                                        //
+                    priceBluRay.parentElement.classList.add("d-none");      //
+                    priceBluRay.parentElement.classList.remove("d-flex");   //
+                }                                                           //  I bottoni con i prezzi scompaiono
+                if (price3D.innerText == "0.00€" || amount3D == 0) {        //  se non ci sono a magazzino
+                    price3D.parentElement.classList.add("d-none");          //
+                    price3D.parentElement.classList.remove("d-flex");       //
+                }                                                           //
+                if (price4K.innerText == "0.00€" || amount4K == 0) {        //
+                    price4K.parentElement.classList.add("d-none");          // 
+                    price4K.parentElement.classList.remove("d-flex");       //
+                }                       //////////////////////////////////////
                 setPrice(item.priceDVD.toFixed(2) + "€");                                 
             }             
         });
@@ -235,7 +231,6 @@ function setPrice(x) {
     document.querySelectorAll(".price")[1].innerText = x;
 }
 
-
 async function addItem(item) {
 	let response = await fetch('http://localhost:3000/item/', {
 		method: 'POST',
@@ -245,21 +240,20 @@ async function addItem(item) {
 		body: JSON.stringify(item)
 	});
 }
-
-
-
-function getContent() {    
-    fetch('https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&append_to_response=videos').then((response) => {
+///////////////// Preleva dall'api i dati relativi all'oggetto visualizzato //////////////////
+function getContent() { 
+    if (!itempage.classList.contains("d-none")) {
+        fetch('https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&append_to_response=videos').then((response) => {
 			return response.json();			
 		}).then((data) => {
 			content = data;
-            date = ((type == "movie") ? content.release_date : content.first_air_date);
-            date = new Date(date); 
+            releaseDate = ((type == "movie") ? content.release_date : content.first_air_date);
+            releaseDate = new Date(releaseDate); 
             checkStore();
             let rate = Math.ceil(content.vote_average);
             setTimeout(review(),600);
             recommend();            
-            switch (rate) {
+            switch (rate) { //// Accende le stelle in base al voto ////
                 case 10 :
                     document.querySelectorAll(".rate")[0].checked = "true";
                     break;
@@ -293,8 +287,10 @@ function getContent() {
             }
             document.getElementById("title").innerHTML = ((content.title != null) ? content.title : content.name);
             document.getElementById("dvdPic").setAttribute("alt", ((content.title != null) ? content.title : content.name));
-            document.getElementById("dvdPic").setAttribute("src", catalog + content.poster_path);
-            document.getElementById("tagline").innerText = "« " + content.tagline + " »";
+            document.getElementById("dvdPic").setAttribute("src", catalog1 + content.poster_path);
+            if (content.tagline != "") {    /// Aggiunge un quote, se presente ///
+                document.getElementById("tagline").innerText = "« " + content.tagline + " »";
+            }            
             document.getElementById("tagline").style.marginTop = "40px";
             document.getElementById("overview").innerText = content.overview;
             document.getElementById("tomorrow").innerHTML = `<b>domani, ${tomorrow.getDate()} ${mesi[tomorrow.getMonth()]}</b>.`;
@@ -307,4 +303,6 @@ function getContent() {
                 document.getElementById("trailer").parentElement.innerHTML = `<img class="px-2" src="${catalog2}${content.backdrop_path}" width="100%" style="border-radius:40px"/>`;
             }
         });    
+    } 
+    
 }

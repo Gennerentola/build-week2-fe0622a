@@ -10,6 +10,7 @@ var startLimit = 3;
 var following = [];
 var searchpage = document.getElementById("search");
 var homepage = document.getElementById("home-page");
+var itempage = document.getElementById("itempage");
 
 ///////////////////////radio buttons//////////////////////////
 var multiRadio = document.getElementById("multi");			//
@@ -30,9 +31,8 @@ var mistery = document.getElementById("mistery");			//
 var mobileSearch = document.getElementById("mobileSearch");
 
 let table = document.getElementById("tableRow");
-var searchField = document.getElementById("search_bar");   				////// va cambiato in "search_bar"
+var searchField = document.getElementById("search_bar");   				
 const catalog = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/"
-var a;																	// si può levare
 //////////////////////////////////
 let date = new Date();			//
 let month = date.getMonth();	//
@@ -49,7 +49,6 @@ else {							//
 date.setMonth(month);			//
 //////////////////////////////////
 
-
 var utente = JSON.parse(sessionStorage.getItem('utente'))
 
 if (utente) {
@@ -61,6 +60,7 @@ if (utente) {
         element.style.display = "none";
     })
 }
+
 multiRadio.addEventListener("change", function(e) {
 	e.preventDefault();
 	listenForInput("Tutti")
@@ -238,6 +238,11 @@ searchField.addEventListener("keypress", (e) => {
 	if (searchField.value) {	
 		if (e.key === "Enter") {
 			e.preventDefault();			
+			if (itempage) {
+				itempage.classList.remove("d-flex");
+				itempage.classList.add("d-none");
+				searchpage.classList.remove("d-none");
+			}			
 			startSearching(searchField.value);			
 		}
 	}
@@ -261,7 +266,12 @@ async function startSearching(keywords) {
 						pageItems.sort(compare);
 						removeDuplicates(pageItems);                   //necessario solo su multi-ricerca
 						searchField.value = "";
-						homepage.classList.add("d-none");
+						if (homepage) {
+							homepage.classList.add("d-none");
+						}
+						else if (mainCart) {
+							mainCart.classList.add("d-none");
+						}						
 						searchpage.classList.remove("d-none");
 						document.body.style.background = "white";
 						table.innerHTML = "";
