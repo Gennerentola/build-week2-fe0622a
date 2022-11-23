@@ -21,17 +21,6 @@ class Store {
 
 var store = new Store;
 
-if (utente) {
-    logged.style.display = "block";
-    //aggiunta dell'avatar scelto al momento della registrazione al login
-    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
-    saluto.classList.remove("interactiveBtn");
-    login.forEach(element => {
-        element.style.display = "none";
-    })
-}
-
-
 function init() {
     visualizzaCarrello();
     svuotaBtn.style.display = "none";
@@ -219,24 +208,8 @@ async function aggiornaStore(user) {
             
         });
     }
-    svuotaCarrello(user)
+    svuotaCarrello()
 }
-
-async function svuotaCarrello(user) {
-    let options = {
-      method: "PATCH",
-     headers: {
-         "Content-Type": "application/json"
-     },
-     body: JSON.stringify({
-      "cart" : []
-     })
-   }
-  
-    let response = await fetch(`http://localhost:3000/user/`+ user.id, options)
-  }
-
-
     
 
 
