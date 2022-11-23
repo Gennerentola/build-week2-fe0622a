@@ -7,26 +7,14 @@ const catalog1 = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/";
 const catalog2 = "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/";
 var searchpage = document.getElementById("search");
 var itempage = document.getElementById("itempage");
-var searchField = document.getElementById("search_bar");   				
+var searchField = document.getElementById("search_bar");  				
 
-var content;
-var analysis;
-var recommendation;
-var releaseDate;
+var content, analysis, recommendation,releaseDate, pBR, pDVD, p3D, p4K, amountDVD, amountBR, amount3D, amount4K, item;
 var priceBluRay = document.getElementById("priceBlu-ray");
 var priceDvD = document.getElementById("priceDVD");
 var price3D = document.getElementById("price3D");
 var price4K = document.getElementById("price4K");
 var addToCart = document.getElementById("addToCart");
-var pBR;
-var pDVD;
-var p3D;
-var p4K;
-var amountDVD;
-var amountBR;
-var amount3D;
-var amount4K;
-var item;
 const today = new Date();
 const tomorrow = new Date();
 tomorrow.setDate(today.getDate() + 1);
@@ -35,18 +23,7 @@ tomorrow.setHours(0, 0, 0, 0);
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-
 var utente = JSON.parse(sessionStorage.getItem('utente'))
-
-if (utente) {
-    logged.style.display = "block";
-    //aggiunta dell'avatar scelto al momento della registrazione al login
-    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
-    saluto.classList.remove("interactiveBtn");
-    login.forEach(element => {
-        element.style.display = "none";
-    })
-}
 
 class Item {
     constructor(_priceDVD, _priceBR, _price3D, _price4K, _amountDVD, _amountBR, _amount3D, _amount4K, _id) {      
@@ -140,7 +117,7 @@ function recommend() {
             }  
     });
 }
-///////////////////// Se un articolo non è ancora a catalogo, la funzione genera dei prezzi predefiniti in base all'anno di uscita e aggiunge l'articolo, e relativi prezzi e quantita a listino nel JSON ////////////////////////
+///////////////////// Se un articolo non è ancora a catalogo, la funzione genera dei prezzi predefiniti in base all'anno di uscita e aggiunge l'articolo, e relativi prezzi e quantità a listino nel JSON ////////////////////////
 function checkStore() {
     fetch('http://localhost:3000/item/' + id).then((response) => {
             if(!response.ok) {                
@@ -213,7 +190,7 @@ function checkStore() {
                     priceBluRay.parentElement.classList.add("d-none");      //
                     priceBluRay.parentElement.classList.remove("d-flex");   //
                 }                                                           //  I bottoni con i prezzi scompaiono
-                if (price3D.innerText == "0.00€" || amount3D == 0) {        //  se non ci sono a magazzino
+                if (price3D.innerText == "0.00€" || amount3D == 0) {        //  se non ci sono oggetti a magazzino
                     price3D.parentElement.classList.add("d-none");          //
                     price3D.parentElement.classList.remove("d-flex");       //
                 }                                                           //

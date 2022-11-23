@@ -103,17 +103,16 @@
 @media screen and (min-width:768px) {  
   #left-column, #right-column {
     position:sticky;
-    top:40px;
+    top:110px;
   }
 
   #right-column {
-    top:10px;
+    top:90px;
     margin-top: -80px;    
     padding-inline: 5px;
   }
 
-  .dvdCover-container-lg {
-    
+  .dvdCover-container-lg {    
     perspective: 600px;
     margin-top: -60px;
   }
@@ -175,6 +174,7 @@
   position: absolute;
   color: #bfbfbf;
 }
+
 .rate {
   border: none;
   outline: none;
@@ -182,13 +182,11 @@
   appearance: none;
   -webkit-appearance: none;
 }
+
 .rate:nth-of-type(odd)::after {
   background-position: right top;
   margin-right: 5px;
 }
-/* .rate:hover {
-  transform: scale(1.2);
-} */
 
 .rate::after {
   content: '';
@@ -204,7 +202,7 @@
 .rate:checked::after, .rate:checked~.rate::after, .rate:hover::after, .rate:hover~.rate::after, .voted::after {
   background-image: url("data:image/svg+xml,%3Csvg t='1567651793068' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1095' width='200' height='200'%3E%3Cpath d='M777.035294 668.611765s18.070588 138.541176 30.117647 240.941176c6.023529 48.188235-30.117647 72.282353-72.282353 54.211765-78.305882-36.141176-192.752941-96.376471-216.847059-108.42353-24.094118 12.047059-144.564706 72.282353-222.870588 108.42353-42.164706 18.070588-78.305882 0-72.282353-54.211765 12.047059-96.376471 30.117647-234.917647 30.117647-234.917647s-114.447059-126.494118-180.705882-204.8c-24.094118-30.117647-6.023529-66.258824 36.141176-78.305882 90.352941-18.070588 234.917647-42.164706 234.917647-42.164706s78.305882-144.564706 126.494118-234.917647c30.117647-54.211765 48.188235-48.188235 48.188235-48.188235 6.023529 0 24.094118 12.047059 36.141177 48.188235 48.188235 90.352941 126.494118 234.917647 126.494118 234.917647s138.541176 30.117647 234.917647 48.188235c42.164706 6.023529 60.235294 48.188235 36.141176 78.305883-60.235294 60.235294-174.682353 192.752941-174.682353 192.752941z' fill='%23facf48' p-id='1096'%3E%3C/path%3E%3C/svg%3E");
 }
-/******************************************************* index.html **************************************************************************/
+/*********************************************************** nav **************************************************************************/
 #formLogged, #formLogged2 {
   display: none;
 }
@@ -217,51 +215,31 @@
   color: #fca72f;
 }
 
-.input-group {
-  border-color: #fca72f;
-}
-
 #saluto:hover, #registrati:hover, #saluto:focus, #btnLogin:hover, #accediRespo:hover, #registratiRespo:hover {
-color:#c79650;
+  color:#c79650;
 }
 
 .navbar-nav {
   --bs-nav-link-hover-color: #c79650;
 }
 
-#form_login input::placeholder, #form_login input  {
+#form_login input::placeholder, #form_login input, #search_bar, .input-group-text, #search_bar::placeholder, .input-group-text .fas  {
   color:#0c41aa;
-}
-
-#search_bar, .input-group-text {
-  border:2px solid #fca72f;
-  color: #0c41aa;
-}
-
-#search_bar {
-  border-left: none;
 }
 
 .input-group-text {
   border-right: none;
 }
 
-#search_bar::placeholder {
-  color: #0c41aa;
-}
-
 #search_bar:focus{
   transition: none;
-}
-.input-group-text .fas {
-  color:#0c41aa;;
 }
 
 .dropdown-menu:hover .dropdown-item {
   display: block;
 }
 
-.dropdown-menu {
+.dropdown-menu, .input-group-text, #user, #password {
   border: 2px solid #fca72f;
 }
 
@@ -274,72 +252,106 @@ color:#c79650;
 .btn.show {
   color: #ffc107
 }
+
 .formLogin input:focus {
   border: none;
 }
 
-#user, #password {
-  border: 2px solid #fca72f;
-}
 .fa-shopping-cart {
   cursor: pointer;
 }
 
 #divider {
   border: 1px solid #fca72f;
-  background-color: #fca72f;
 }
 
-.interactiveBtn {
-  background-color: #fca72f;
-  color: #0c41aa;
-}
-#saluto {
-  margin-left: 20px !important;
-  padding: 6px;
+#saluto, #registrati {
+  padding: 8px;
+  margin-left: 8px;
 }
 
-#categorieFilm li a:hover, #categorieSerie li a:hover, #formLogged li a:hover {
+#categorieFilm li a:hover, #categorieSerie li a:hover, #formLogged li a:hover, .interactiveBtn, #divider {
   background-color: #fca72f;
   color: #0c41aa;
 }
 
-/**********************************************************************************************************************************************/
-/*                                             MEDIA QUERY                                      */
+#search_bar, span.input-group-text.bg-white {
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+}
 
+.nav-link { 
+  padding: 0;
+}
 
-@media screen and (max-width:991px) {
-  #respo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-left: -60px;
-  }
+.input-group {
+  border: 3px solid #fca72f;
+  border-radius: 7px;
+  background-color: white;
+}
 
-
-.list-unstyled .fa-shopping-cart {
-  margin: 20px 0 0 10px;
-  display: block;
-  margin-top: 50px;
-  margin-bottom: -25px;
+#respo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
 }
 
 #respoSaluto {
   display: inline-block;
-  margin-left: 50px;
-  margin-top: -20px;
-}
-#saluto {
-  margin-top: 15px !important;
-  padding: 6px 12px 6px 12px !important;
 }
 
-.interactiveBtn {
-  margin-left: 14px !important;
+.barButtons, .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-#registrati {
-  margin-top: -5px;
+
+#categorieFilm, #categorieSerie, #menuLogin {
+  position: absolute;
+  left: -25px;
+  margin-top: 0;
 }
+
+#categorieSerie {
+  left: -50px;
+}
+
+#menuLogin {
+  left: -50px;
+  margin-top: 8px;  
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+}
+
+input.bg-white.dropdown-item {
+  width:90%;
+}
+
+@media screen and (min-width:768px) {
+  #navbarSupportedContent {
+    flex-basis:content;
+  }
+
+  .barButtons {
+    width: 100%;
+  }
+
+  #categorieFilm {
+    left: -55px;
+    margin-top: 5px;
+  }
+  
+  #categorieSerie {
+    left: -40px;
+    margin-top: 5px;
+  }
+
+  #menuLogin {    
+    margin-top: 17px;
+  }
 }
 /******************************************************* search.html *************************************************************************/
 
@@ -391,24 +403,6 @@ label[for="adventure"], label[for="animation"], label[for="comedy"], label[for="
   color: teal;
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /******************************************************** item.html *************************************************************************/
 
 .tip {
@@ -434,12 +428,13 @@ div.radios > label {
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #blu-ray:checked ~ label[for="blu-ray"], #dvd:checked ~ label[for="dvd"], #d3D:checked ~ label[for="d3D"], #d4K:checked ~ label[for="d4K"] {
   border: 5px solid teal;
   font-weight: 700;
-  background-color:#c4e5f0;
+  background-color:#c4e5f0;  
 }
 
 #blu-ray:checked ~ label[for="blu-ray"] > span, #dvd:checked ~ label[for="dvd"] > span, #d3D:checked ~ label[for="d3D"] > span, #d4K:checked ~ label[for="d4K"] > span {
@@ -470,6 +465,10 @@ sup {
 
 #addToCart, #buyNow {
   border-radius: 50px;
+}
+
+#addToCart:active, #buyNow:active {
+  transform: scale(0.95);
 }
 
 #buyNow {
@@ -574,11 +573,6 @@ div.container-carousel img:hover{
 	to{transform: rotateY(360deg);}
 }
 
-
-
-
-
-
 /******************************************************** registration.html *************************************************************************/
 #main_registrazione {
   background-image: url(/assets/img/pattern.jpg);
@@ -612,7 +606,7 @@ div.container-carousel img:hover{
 #menu_drop li {
   list-style: none;
 }
-.avatar1 {
+.avatar1, .hideTooltip {
   display: none;
 }
 
@@ -621,11 +615,8 @@ div.container-carousel img:hover{
   height: 80px;
 }
 
-.hideTooltip {
-    display: none;
-}
 .showTooltip {
-display: initial;
+  display: initial;
 }
 
 #registrati:focus {
@@ -633,7 +624,6 @@ background-color: #01060f;
 }
 
 /* animazione avatar e rimozione radio button */
-
 .avatar {
   cursor: pointer;
 }
@@ -644,15 +634,6 @@ background-color: #01060f;
 
 input.radio_avatar[type="radio"]{
     visibility:hidden;
-}
-
-/* tooltip per password */
-
-.hideTooltip {
-  display: none;
-}
-.showTooltip {
-display: initial;
 }
 
 @media screen and (min-width: 768px){
@@ -668,44 +649,24 @@ display: initial;
   }    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
 /******************************************************** cart.html *************************************************************************/
 
 #footer {
   position:fixed;
   bottom:0px;
-  height:40px;
   width:100%;
   z-index: 1031;
 }
 
-#spessoreCarrello {
+#spessoreCarrello, #footer {
   height: 40px;
 }
 
-#footerStyle {
+#footerStyle, #barraPagamento a {
   background-color: #0c41aa;
 }
 
 #barraPagamento a {
-  background-color: #0c41aa;
   color: #ffc107;
 }
 /********************** MEDIA QUERY **********************/
@@ -719,33 +680,12 @@ display: initial;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*******************************************home****************************************************************/
 #homeBody {
-  background-image: url(../img/pattern.jpg);
+  background-image: url(../img/pattern.jpg);  
+}
+
+.layout {
   padding-block: 28px 40px;
 }
 

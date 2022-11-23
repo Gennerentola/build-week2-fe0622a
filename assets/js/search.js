@@ -11,6 +11,8 @@ var following = [];
 var searchpage = document.getElementById("search");
 var homepage = document.getElementById("home-page");
 var itempage = document.getElementById("itempage");
+var mainCart = document.getElementById("mainCart");
+var salutoS = document.getElementById('saluto');
 
 ///////////////////////radio buttons//////////////////////////
 var multiRadio = document.getElementById("multi");			//
@@ -51,198 +53,10 @@ date.setMonth(month);			//
 
 var utente = JSON.parse(sessionStorage.getItem('utente'))
 
-if (utente) {
-    logged.style.display = "block";
-    //aggiunta dell'avatar scelto al momento della registrazione al login
-    saluto.innerHTML = `<img src="${utente.avatar}" width="30px" heigth="30px" class="rounded-circle mx-2"> Ciao,&nbsp;${utente.nome}`;
-    saluto.classList.remove("interactiveBtn");
-    login.forEach(element => {
-        element.style.display = "none";
-    })
-}
-
-multiRadio.addEventListener("change", function(e) {
-	e.preventDefault();
-	listenForInput("Tutti")
-});
-
-movieRadio.addEventListener("change", function(e) {
-	e.preventDefault();
-	listenForInput("Film")
-});
-
-tvRadio.addEventListener("change", function(e) {
-	e.preventDefault();
-	listenForInput("Tv");
-});
-
-function listenForInput(string) {
-	document.getElementById("searchParameter").innerText = string;
-}
-/////////////////search offcanvas///////////////////
-mobileSearch.addEventListener("keypress", (e) => {
-	if (e.key === "Enter") {
-		e.preventDefault();
-		let closeCanvas = document.querySelector('[data-bs-dismiss="offcanvas"]');
-		closeCanvas.click();		
-		detailedSearch(mobileSearch.value);			
-	}	
-})
-
-function detailedSearch(keywords) {
-	if (keywords != "" || multiRadio.checked) {
-		startSearching(keywords);
-	}
-	else {		
-		let genresMovie = [];
-		let genresTv = [];
-		if (movieRadio.checked) {
-			searchtype = "movie";
-		}
-		else if (tvRadio.checked) {
-			searchtype = "tv";
-		}
-		else {
-			searchtype = "multi"
-		}
-		if (animation.checked) {
-			genresMovie.push(16);
-			genresTv.push(16);
-		}
-		if (comedy.checked) {
-			genresMovie.push(35);
-			genresTv.push(35);
-		}
-		if (crime.checked) {
-			genresMovie.push(80);
-			genresTv.push(80);
-		}
-		if (documentary.checked) {
-			genresMovie.push(99);
-			genresTv.push(99);
-		}
-		if (drama.checked) {
-			genresMovie.push(18);
-			genresTv.push(18);
-		}
-		if (family.checked) {
-			genresMovie.push(10751);
-			genresTv.push(10751);
-		}
-		if (mistery.checked) {
-			genresMovie.push(9648);
-			genresTv.push(9648);
-		}
-		if (adventure.checked) {
-			genresMovie.push(12);
-			genresMovie.push(28);
-			genresTv.push(10759);
-		}		
-		if (fantasy.checked) {
-			genresMovie.push(14);
-			genresMovie.push(878);
-			genresTv.push(10765);
-		}
-		startSearchByGenre(genresMovie, genresTv);
-	}	
-}
-
-function startSearchByGenre(genresMovie, genresTv) {
-	let searchString1 = genresMovie[0];
-	let searchString2 = genresTv[0];
-	pageItems = [];
-	if (searchtype == "movie") {
-		for (i = 1; i < genresMovie.lenght; i++) {		
-			searchString1 += "%2C" + genresMovie[i];
-		}
-		call = 'https://api.themoviedb.org/3/discover/movie?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&sort_by=vote_count.desc&certification.lte=09-11-2022&include_adult=false&include_video=false&with_watch_monetization_types=flatrate&with_genres=' + searchString1 + "&page=";
-		fetch(call+1).then((response) => {
-			return response.json();			
-		}).then((data) => {  								
-			pageItems = data.results;			
-		});
-	}
-	else {	
-		for (i = 1; i < genresTv.lenght; i++) {		
-			searchString2 += "%2C" + genresTv[i];
-		}
-		call = 'https://api.themoviedb.org/3/discover/tv?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&sort_by=vote_count.desc&certification.lte=09-11-2022&include_adult=false&include_video=false&with_watch_monetization_types=flatrate&with_genres=' + searchString2 + "&page=";
-		fetch(call+1).then((response) => {
-			return response.json();			
-		}).then((data) => {  								
-			pageItems = pageItems.concat(data.results);			
-		});
-	}	
-	fetch(call+2).then((response) => {
-		return response.json();			
-	}).then((answer) => {  								
-		pageItems = pageItems.concat(answer.results);			
-	});
-	
-	currentPage = 1;
-	pages = 4;
-	total = 40;
-	setTimeout( () => {
-		mobileSearch.value = "";				
-		table.innerHTML = "";
-		for (i=0; i < pageItems.length; i++) {
-			let showcase = document.createElement('div');
-			showcase.className = "col-12 col-sm-4 col-lg-3 pe-0 ps-2 ps-sm-4 d-flex justify-content-around flex-sm-column align-items-sm-baseline ps-md-5 align-items-lg-start";
-			table.appendChild(showcase);
-			let elementCover = document.createElement('div');					
-			let coverLink = document.createElement('a');
-			coverLink.className = "dvdCover-container col-6";
-			coverLink.href = "item.html?media_type=" + searchtype + "&id=" + pageItems[i].id;
-			elementCover.appendChild(coverLink);
-			elementCover.className = "ms-3"
-			let dvdCover = document.createElement('div');
-			dvdCover.className = "dvdCover";
-			coverLink.appendChild(dvdCover);
-			let coverFront = document.createElement('img');
-			coverFront.src = catalog + pageItems[i].poster_path;
-			dvdCover.appendChild(coverFront);
-			let dvdInfo = document.createElement('div');
-			dvdInfo.className = "col-6 mt-5 px-1 mt-sm-1 ps-sm-0 ps-lg-3 my-xl-5";
-			let dvdTitle = document.createElement('h3');
-			dvdTitle.className = "fs-6 text-start mt-sm-3";
-			dvdTitle.innerHTML = ((pageItems[i].title == null) ? pageItems[i].name : pageItems[i].title);
-			vote[i] = Math.ceil(pageItems[i].vote_average);
-			let dvdRate = document.createElement('div');
-			dvdRate.className = "comp-rate";
-			let divStars = document.createElement('div');
-			let spanStars = document.createElement('span');
-			spanStars.className = "score";
-			divStars.appendChild(spanStars);
-			let rateRadio1 = document.createElement('input');/*
-			rateRadio1.type = "radio";
-			rateRadio1.className = "rate";
-			rateRadio1.name = "rate";
-			let rateRadio2 = rateRadio1.cloneNode(true);
-			let rateRadio3 = rateRadio1.cloneNode(true);;
-			let rateRadio4 = rateRadio1.cloneNode(true);;		// va aggiunta funzionalità accensione stelle
-			let rateRadio5 = rateRadio1.cloneNode(true);;
-			let rateRadio6 = rateRadio1.cloneNode(true);;
-			let rateRadio7 = rateRadio1.cloneNode(true);;
-			let rateRadio8 = rateRadio1.cloneNode(true);;
-			let rateRadio9 = rateRadio1.cloneNode(true);;
-			let rateRadio10 = rateRadio1.cloneNode(true);;
-			dvdRate.append(divStars, rateRadio1, rateRadio2, rateRadio3, rateRadio4, rateRadio5, rateRadio6, rateRadio7, rateRadio8, rateRadio9, rateRadio10);*/
-			dvdInfo.append(dvdTitle, dvdRate);
-			showcase.append(elementCover, dvdInfo);			
-		}					
-	}, 1000);	
-}
-
-////////////////ricerca provvisoria/////////////////
 searchField.addEventListener("keypress", (e) => {
 	if (searchField.value) {	
 		if (e.key === "Enter") {
-			e.preventDefault();			
-			if (itempage) {
-				itempage.classList.remove("d-flex");
-				itempage.classList.add("d-none");
-				searchpage.classList.remove("d-none");
-			}			
+			e.preventDefault();						
 			startSearching(searchField.value);			
 		}
 	}
@@ -254,78 +68,15 @@ async function startSearching(keywords) {
 		fetch(call+1).then((response) => {
 				return response.json();			
 			}).then(async (data) => {
-				pageItems = data.results;
-				let total = data.total_results;
-				let pages = data.total_pages;
-				let currentPage = data.page;
+				pageItems = data.results;				
+				let pages = data.total_pages;				
 				if (pageItems) {
-					await getFullList(call, pages);
-					//setTimeout( () => {
-						console.log(pageItems);							////////////////cancellabile/////////////////////
-						trimMovieList(pageItems);
-						pageItems.sort(compare);
-						removeDuplicates(pageItems);                   //necessario solo su multi-ricerca
-						searchField.value = "";
-						if (homepage) {
-							homepage.classList.add("d-none");
-						}
-						else if (mainCart) {
-							mainCart.classList.add("d-none");
-						}						
-						searchpage.classList.remove("d-none");
-						document.body.style.background = "white";
-						table.innerHTML = "";
-						//console.table(pageItems);						
-						for (i=0; i < pageItems.length; i++) {
-							let showcase = document.createElement('div');
-							showcase.className = "col-12 col-sm-4 col-lg-3 pe-0 ps-2 ps-sm-4 d-flex justify-content-around flex-sm-column align-items-sm-baseline ps-md-5 align-items-lg-start";
-							table.appendChild(showcase);
-							let elementCover = document.createElement('div');					
-							let coverLink = document.createElement('a');
-							coverLink.className = "dvdCover-container col-6";
-							coverLink.href = "item.html?media_type=" + pageItems[i].media_type + "&id=" + pageItems[i].id;
-							elementCover.appendChild(coverLink);
-							elementCover.className = "ms-3"
-							let dvdCover = document.createElement('div');
-							dvdCover.className = "dvdCover";
-							coverLink.appendChild(dvdCover);
-							let coverFront = document.createElement('img');
-							coverFront.src = catalog + pageItems[i].poster_path;
-							dvdCover.appendChild(coverFront);
-							let dvdInfo = document.createElement('div');
-							dvdInfo.className = "col-6 mt-5 px-1 mt-sm-1 ps-sm-0 ps-lg-3 my-xl-5";
-							let dvdTitle = document.createElement('h3');
-							dvdTitle.className = "fs-6 text-start mt-sm-3";
-							dvdTitle.innerHTML = ((pageItems[i].title == null) ? pageItems[i].name : pageItems[i].title);
-							vote[i] = Math.ceil(pageItems[i].vote_average);
-							let dvdRate = document.createElement('div');
-							dvdRate.className = "comp-rate";
-							let divStars = document.createElement('div');
-							let spanStars = document.createElement('span');
-							spanStars.className = "score";
-							divStars.appendChild(spanStars);
-							let rateRadio = [];
-							rateRadio[1] = document.createElement('input');
-							rateRadio[1].type = "radio";
-							rateRadio[1].className = "rate";
-							rateRadio[1].name = "rate" + [i];
-							rateRadio[2] = rateRadio[1].cloneNode(true);
-							rateRadio[3] = rateRadio[1].cloneNode(true);
-							rateRadio[4] = rateRadio[1].cloneNode(true);
-							rateRadio[5] = rateRadio[1].cloneNode(true);
-							rateRadio[6] = rateRadio[1].cloneNode(true);
-							rateRadio[7] = rateRadio[1].cloneNode(true);
-							rateRadio[8] = rateRadio[1].cloneNode(true);
-							rateRadio[9] = rateRadio[1].cloneNode(true);
-							rateRadio[10] = rateRadio[1].cloneNode(true);
-							dvdRate.append(divStars, rateRadio[10], rateRadio[9], rateRadio[8], rateRadio[7], rateRadio[6], rateRadio[5], rateRadio[4], rateRadio[3], rateRadio[2], rateRadio[1]);
-							rateRadio[vote[i]].checked = true;							
-							/*for (k = 1; k <= vote[i]; k++) {
-								rateRadio[k].classList.add("voted");
-							}*/
-							dvdInfo.append(dvdTitle, dvdRate);
-							showcase.append(elementCover, dvdInfo);						
-						}											
+					await getFullList(call, pages);													
+					trimMovieList(pageItems);
+					pageItems.sort(compare);
+					removeDuplicates(pageItems);                   //necessario solo su multi-ricerca
+					searchField.value = "";
+					displayItems(1, pageItems.length, pageItems);			
 				}
 				else {
 					console.log("a");
@@ -337,7 +88,6 @@ async function startSearching(keywords) {
 			table.innerHTML = "<h2>Si prega di rendere più specifica la ricerca.</h2>";
 		}
 }
-
 
 async function getFullList(call, lastPage) {
 	for (i = 2; i <= lastPage; i++) {
@@ -390,4 +140,218 @@ function removeDuplicates(items) {
 	for (let i = 0; i < deletables; i++) {
 		items.shift();
 	}
+}
+
+async function collection(type, genre) {	
+	call = 'https://api.themoviedb.org/3/discover/' + type + '?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&sort_by=vote_count.desc&certification.lte=09-11-2022&include_adult=false&include_video=false&with_watch_monetization_types=flatrate&with_genres=' + genre + "&page=";
+	await fetch(call+1).then((response) => {
+		return response.json();			
+	}).then(async (data) => {  								
+		pageItems = data.results;			
+	});
+	await fetch(call+2).then((response) => {
+		return response.json();			
+	}).then(async (data2) => {  								
+		pageItems = pageItems.concat(data2.results);			
+	});
+	await fetch(call+3).then((response) => {
+		return response.json();			
+	}).then(async (data3) => {  								
+		pageItems = pageItems.concat(data3.results);
+		for (i=0; i<pageItems.length; i++) {
+			pageItems[i].media_type = type;
+		}
+		displayItems(1, 60, pageItems);					
+	});
+}
+
+function displayItems(openPage, length, pageItems) {
+	if (homepage) {
+		homepage.classList.add("d-none");
+	}
+	else if (mainCart) {
+		mainCart.classList.add("d-none");
+	}
+	else if (itempage) {
+		itempage.classList.remove("d-flex");
+		itempage.classList.add("d-none");
+		searchpage.classList.remove("d-none");
+	}							
+	searchpage.classList.remove("d-none");
+	document.body.style.background = "white";
+	table.innerHTML = "";
+	pages = Math.ceil(length/12);											
+	for (i = 0 + (12 * (openPage-1)) ; i < (12 * openPage); i++) {
+		if (i < length) {
+			let showcase = document.createElement('div');
+			showcase.className = "col-12 col-sm-4 col-lg-3 pe-0 ps-2 ps-sm-4 ps-xl-0 d-flex justify-content-around flex-sm-column align-items-sm-baseline ps-md-5 align-items-lg-start";
+			table.appendChild(showcase);
+			let elementCover = document.createElement('div');					
+			let coverLink = document.createElement('a');
+			coverLink.className = "dvdCover-container col-6";
+			coverLink.href = "item.html?media_type=" + pageItems[i].media_type + "&id=" + pageItems[i].id;
+			elementCover.appendChild(coverLink);
+			elementCover.className = "ms-3 d-xl-flex mx-xl-auto align-content-xl-around justify-content-xl-between align-items-xl-baseline"
+			let dvdCover = document.createElement('div');
+			dvdCover.className = "dvdCover";
+			coverLink.appendChild(dvdCover);
+			let coverFront = document.createElement('img');
+			coverFront.src = catalog + pageItems[i].poster_path;
+			dvdCover.appendChild(coverFront);
+			let dvdInfo = document.createElement('div');
+			dvdInfo.className = "col-6 mt-5 px-1 mt-sm-1 ps-sm-0 ps-lg-3 my-xl-5 mx-xl-auto";
+			let dvdTitle = document.createElement('h3');
+			dvdTitle.className = "fs-6 text-start mt-sm-3";
+			dvdTitle.innerHTML = ((pageItems[i].title == null) ? pageItems[i].name : pageItems[i].title);
+			vote[i] = Math.ceil(pageItems[i].vote_average);
+			let dvdRate = document.createElement('div');
+			dvdRate.className = "comp-rate";
+			let divStars = document.createElement('div');
+			let spanStars = document.createElement('span');
+			spanStars.className = "score";
+			divStars.appendChild(spanStars);
+			let rateRadio = [];
+			rateRadio[1] = document.createElement('input');
+			rateRadio[1].type = "radio";
+			rateRadio[1].className = "rate";
+			rateRadio[1].name = "rate" + [i];
+			rateRadio[2] = rateRadio[1].cloneNode(true);
+			rateRadio[3] = rateRadio[1].cloneNode(true);
+			rateRadio[4] = rateRadio[1].cloneNode(true);
+			rateRadio[5] = rateRadio[1].cloneNode(true);
+			rateRadio[6] = rateRadio[1].cloneNode(true);
+			rateRadio[7] = rateRadio[1].cloneNode(true);
+			rateRadio[8] = rateRadio[1].cloneNode(true);
+			rateRadio[9] = rateRadio[1].cloneNode(true);
+			rateRadio[10] = rateRadio[1].cloneNode(true);
+			dvdRate.append(divStars, rateRadio[10], rateRadio[9], rateRadio[8], rateRadio[7], rateRadio[6], rateRadio[5], rateRadio[4], rateRadio[3], rateRadio[2], rateRadio[1]);
+			rateRadio[vote[i]].checked = true;			
+			dvdInfo.append(dvdTitle, dvdRate);
+			showcase.append(elementCover, dvdInfo);
+			window.scrollTo({top: 0, behavior: 'smooth'});			//riporta in cima al caricamento della lista
+		};								
+	}
+	paginate(openPage, length, pageItems);											
+}
+
+function paginate(openPage, length, items) {
+	var totalPages = Math.ceil(length/12);	
+	console.log(totalPages);
+	let btnGroup = document.getElementById("pagination");
+	btnGroup.innerHTML = "";
+	btnGroup.style.marginBottom = "-1px";
+	let btnFirst = document.createElement("button");
+	btnFirst.className = "btn col-1 fw-bold";
+	btnFirst.innerHTML = "<i class='fas fa-angles-left'></i>";
+	btnFirst.style.backgroundColor = "#0c41aa";
+	btnFirst.style.borderBottom = "4px solid #0c41aa"
+	btnFirst.style.borderBottomLeftRadius = 0;
+	btnFirst.style.color = "darkorange";
+	btnGroup.appendChild(btnFirst);
+	btnFirst.addEventListener("click", function(e){
+		e.preventDefault();
+		if (openPage > 1) {
+			displayItems(1, length, items)
+		}
+	});
+	let btnPrevious = document.createElement("button");
+	btnPrevious.className = "btn col-1 fw-bold";
+	btnPrevious.innerHTML = "<i class='fas fa-angle-left'></i>";
+	btnPrevious.style.backgroundColor = "#000";
+	btnPrevious.style.color = "darkorange";
+	btnGroup.appendChild(btnPrevious);
+	btnPrevious.addEventListener("click", function(e){
+		e.preventDefault();
+		if (openPage > 1) {
+			displayItems(openPage - 1, length, items)
+		}		
+	});
+	for (let i = 1; i <= totalPages; i++) {
+		let btnX = document.createElement("button");
+		btnX.className = "btn btn-warning col-1 fw-bolder";
+		btnX.innerHTML = i;
+		btnX.style.border = "2px solid #0c41aa"
+		btnX.style.color = "#0c41aa";		
+		btnGroup.appendChild(btnX);
+		if (i == openPage) {
+			btnX.classList.remove("btn-warning");
+			btnX.style.backgroundColor = "darkorange";
+		};
+		if (i < (openPage - 2) || i > (openPage + 2)) {
+			btnX.classList.add("d-none");
+		};
+		if (openPage <= 3) {
+			if (i == 4 || i == 5) {
+				btnX.classList.remove("d-none");
+			}
+		}
+		if (openPage >= totalPages - 2) {
+			if (i == (totalPages - 3) || i == (totalPages - 4)) {
+				btnX.classList.remove("d-none");
+			}
+		}
+		btnX.addEventListener("click", function(e){
+			e.preventDefault();
+			displayItems(i, length, items)                
+		});
+		console.log(i);
+	};
+	let btnNext = document.createElement("button");
+	btnNext.className = "btn col-1 fw-bold";
+	btnNext.innerHTML = "<i class='fas fa-angle-right'></i>";
+	btnNext.style.backgroundColor = "#000";
+	btnNext.style.color = "darkorange";
+	btnGroup.appendChild(btnNext);
+	btnNext.addEventListener("click", function(e){
+		e.preventDefault();
+		if (openPage < totalPages) {
+			displayItems(openPage + 1, length, items)
+		}	
+	});
+	let btnLast = document.createElement("button");
+	btnLast.className = "btn col-1 fw-bold";
+	btnLast.innerHTML = "<i class='fas fa-angles-right'></i>";
+	btnLast.style.backgroundColor = "#0c41aa";
+	btnLast.style.borderBottom = "4px solid #0c41aa"
+	btnLast.style.borderBottomRightRadius = 0;
+	btnLast.style.color = "darkorange";
+	btnGroup.appendChild(btnLast);
+	btnLast.addEventListener("click", function(e){
+		e.preventDefault();
+		if (openPage < totalPages) {
+			displayItems(totalPages, length, items)
+		}	
+	});	
+}
+
+async function lastArrivals() {			
+		call = 'https://api.themoviedb.org/3/discover/movie?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&sort_by=vote_count.desc&include_adult=false&include_video=false&primary_release_year=2022&with_watch_monetization_types=flatrate&page=';
+		fetch(call+1).then((response) => {
+				return response.json();			
+			}).then(async (data) => {
+				pageItems = data.results;				
+				let pages = 15;	
+				await getFullList(call, pages);													
+				trimMovieList(pageItems);
+				for (i=0; i<pageItems.length; i++) {
+					pageItems[i].media_type = "movie";
+				}
+				displayItems(1, pageItems.length, pageItems);			
+			});		
+}
+
+async function mustSee() {			
+	call = 'https://api.themoviedb.org/3/discover/movie?api_key=cdeff0f8f48e4e92d2817d7f0da9db18&language=it&sort_by=vote_count.desc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate&page=';
+	fetch(call+1).then((response) => {
+			return response.json();			
+		}).then(async (data) => {
+			pageItems = data.results;				
+			let pages = 15;	
+			await getFullList(call, pages);													
+			trimMovieList(pageItems);
+			for (i=0; i<pageItems.length; i++) {
+				pageItems[i].media_type = "movie";
+			}
+			displayItems(1, pageItems.length, pageItems);			
+		});		
 }
